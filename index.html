@@ -1,464 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QS6HTQRDKK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-<title>Quiz App - Study Notes, MCQ & Exam Preparation</title>
+        gtag('config', 'G-QS6HTQRDKK');
+    </script>
 
-<meta name="description" content="Free Quiz App for History, Geography, English, Math, Physics, Chemistry, Biology and Board Exam preparation.">
 
-<meta name="keywords" content="quiz app, online quiz, study notes, board exam, CBSE, Bihar Board, MCQ practice, class 10, class 12">
 
-<meta name="author" content="Prime Software">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="robots" content="index, follow">
+    <title>Quiz App - Study Notes, MCQ & Exam Preparation</title>
 
-<link rel="canonical" href="https://www.primesoftware17.co.in/">
+    <meta name="description"
+        content="Free Quiz App for History, Geography, English, Math, Physics, Chemistry, Biology and Board Exam preparation.">
 
-<!-- Open Graph -->
+    <meta name="keywords"
+        content="quiz app, online quiz, study notes, board exam, CBSE, Bihar Board, MCQ practice, class 10, class 12">
 
-<meta property="og:title" content="Quiz App - Study Notes & Exam Preparation">
-<meta property="og:description" content="Practice MCQs and study notes for school and competitive exams.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.primesoftware17.co.in/">
-<meta property="og:image" content="https://www.primesoftware17.co.in/logo.png">
+    <meta name="author" content="Prime Software">
 
-<!-- Favicon -->
+    <meta name="robots" content="index, follow">
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<style>
-body {
-    font-family: Arial;
-    text-align: center;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+    <link rel="canonical" href="https://www.primesoftware17.co.in/">
 
-h1 {
-    margin-top: 30px;
-}
+    <!-- Open Graph -->
 
-.container {
-    margin-top: 20px;
-    padding-bottom: 40px;
-}
+    <meta property="og:title" content="Quiz App - Study Notes & Exam Preparation">
+    <meta property="og:description" content="Practice MCQs and study notes for school and competitive exams.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.primesoftware17.co.in/">
+    <meta property="og:image" content="https://www.primesoftware17.co.in/logo.png">
 
-button {
-    display: block;
-    width: 260px;
-    margin: 10px auto;
-    padding: 14px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: #2c3e50;
-    color: white;
-}
+    <!-- Favicon -->
 
-button:hover {
-    background: #1abc9c;
-}
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-.back {
-    background: #e74c3c;
-}
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-/* 🔥 UPDATE BAR */
-.update-bar {
-    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-    color: #ffffff;
-    padding: 18px 20px;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
-    letter-spacing: 0.5px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 3px solid #1abc9c;
-}
+        h1 {
+            margin-top: 30px;
+        }
 
-/* ☰ MENU BUTTON */
-.menu-btn{
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 2000;
-    background: #2c3e50;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-}
+        .container {
+            margin-top: 20px;
+            padding-bottom: 40px;
+        }
 
-/* SIDE MENU */
-.side-menu{
-    position: fixed;
-    top: 0;
-    left: -260px;
-    width: 240px;
-    height: 100%;
-    background: #1f2a36;
-    color: white;
-    padding: 20px;
-    transition: 0.3s;
-    z-index: 1500;
-}
+        button {
+            display: block;
+            width: 260px;
+            margin: 10px auto;
+            padding: 14px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #2c3e50;
+            color: white;
+        }
 
-.side-menu h3{
-    margin-bottom: 20px;
-}
+        button:hover {
+            background: #1abc9c;
+        }
 
-.menu-link{
-    display: block;
-    padding: 12px;
-    margin: 10px 0;
-    background: #2c3e50;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
+        .back {
+            background: #e74c3c;
+        }
 
-.menu-link:hover{
-    background: #1abc9c;
-}
+        /* 🔥 UPDATE BAR */
+        .update-bar {
+            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            padding: 18px 20px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #1abc9c;
+        }
 
-/* OVERLAY */
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    z-index: 1400;
-}
+        /* ☰ MENU BUTTON */
+        .menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 2000;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
 
-/* 🔥 MORE SERVICES SECTION - MODERN UI */
-#moreSection{
-    margin-top: 60px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #1abc9c, #16a085);
-    color: #fff;
-    text-align: center;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    box-shadow: 0 -10px 25px rgba(0,0,0,0.15);
-}
+        /* SIDE MENU */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 240px;
+            height: 100%;
+            background: #1f2a36;
+            color: white;
+            padding: 20px;
+            transition: 0.3s;
+            z-index: 1500;
+        }
 
-/* Title */
-#moreSection h2{
-    font-size: 26px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
+        .side-menu h3 {
+            margin-bottom: 20px;
+        }
 
-/* Paragraph text */
-#moreSection p{
-    font-size: 15px;
-    line-height: 1.8;
-    opacity: 0.95;
-    margin-bottom: 20px;
-}
+        .menu-link {
+            display: block;
+            padding: 12px;
+            margin: 10px 0;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
 
-/* Sub headings */
-#moreSection h3{
-    margin-top: 25px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #ffffff;
-}
+        .menu-link:hover {
+            background: #1abc9c;
+        }
 
-/* 🔘 BUTTON STYLE */
-.linkBtn{
-    display: inline-block;
-    margin: 10px auto;
-    padding: 12px 20px;
-    border-radius: 10px;
-    background: #2c3e50;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
-}
+        /* OVERLAY */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1400;
+        }
 
-/* Hover effect */
-.linkBtn:hover{
-    background: #000;
-    transform: translateY(-2px);
-}
+        /* 🔥 MORE SERVICES SECTION - MODERN UI */
+        #moreSection {
+            margin-top: 60px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: #fff;
+            text-align: center;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.15);
+        }
 
-/* Special email button override */
-.linkBtn[style]{
-    background: #e1306c !important;
-}
+        /* Title */
+        #moreSection h2 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
 
-.linkBtn[style]:hover{
-    background: #c2185b !important;
-}
+        /* Paragraph text */
+        #moreSection p {
+            font-size: 15px;
+            line-height: 1.8;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
 
-/* 📱 MOBILE RESPONSIVE */
-@media (max-width: 600px){
-    #moreSection{
-        padding: 30px 15px;
-    }
+        /* Sub headings */
+        #moreSection h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #ffffff;
+        }
 
-    #moreSection h2{
-        font-size: 22px;
-    }
+        /* 🔘 BUTTON STYLE */
+        .linkBtn {
+            display: inline-block;
+            margin: 10px auto;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+        }
 
-    .linkBtn{
-        width: 90%;
-    }
-}
-</style>
+        /* Hover effect */
+        .linkBtn:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Special email button override */
+        .linkBtn[style] {
+            background: #e1306c !important;
+        }
+
+        .linkBtn[style]:hover {
+            background: #c2185b !important;
+        }
+
+        /* 📱 MOBILE RESPONSIVE */
+        @media (max-width: 600px) {
+            #moreSection {
+                padding: 30px 15px;
+            }
+
+            #moreSection h2 {
+                font-size: 22px;
+            }
+
+            .linkBtn {
+                width: 90%;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
-<!-- 🔥 UPDATE BAR -->
-<div class="update-bar">
-    📢 Latest Update: BSEB & CBSE Hindi Class 10 has been updated today
-</div>
+    <!-- 🔥 UPDATE BAR -->
+    <div class="update-bar">
+        📢 Latest Update: BSEB Hindi Class 10 has been updated today
+    </div>
 
-<!-- ☰ MENU BUTTON -->
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <!-- ☰ MENU BUTTON -->
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<!-- SIDE MENU -->
-<div id="sideMenu" class="side-menu">
-    <h3>Menu</h3>
+    <!-- SIDE MENU -->
+    <div id="sideMenu" class="side-menu">
+        <h3>Menu</h3>
 
-    <a href="redirect.html" class="menu-link">
-        Quick Access Services
-    </a>
+        <a href="redirect.html" class="menu-link">
+            Quick Access Services
+        </a>
 
-    <a href="pdf_viewer/pdf.html" class="menu-link">
-        Study Material PDF
-    </a>
-</div>
+        <a href="pdf_viewer/pdf.html" class="menu-link">
+            Study Material PDF
+        </a>
+    </div>
 
-<!-- OVERLAY -->
-<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+    <!-- OVERLAY -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-<h1 id="title">Select Subject</h1>
+    <h1 id="title">Select Subject</h1>
 
-<div class="container" id="menu"></div>
+    <div class="container" id="menu"></div>
 
-<!-- 🔥 MORE SERVICES SECTION (FIRST PAGE LAST PART) -->
-<div id="moreSection">
-    <h2>✨ Our Services</h2>
+    <!-- 🔥 MORE SERVICES SECTION (FIRST PAGE LAST PART) -->
+    <div id="moreSection">
+        <h2>✨ Our Services</h2>
 
-    <p>
-        ✔ Always Updated Questions<br>
-        ✔ Daily & Weekly New Content<br>
-        ✔ Live Voice & Video Help
-    </p>
+        <p>
+            ✔ Always Updated Questions<br>
+            ✔ Daily & Weekly New Content<br>
+            ✔ Live Voice & Video Help
+        </p>
 
-    <h3>📩 Feedback</h3>
-    <a class="linkBtn" href="http://tinyurl.com/rs5numty" target="_blank">
-        Give Feedback
-    </a>
+        <h3>📩 Feedback</h3>
+        <a class="linkBtn" href="http://tinyurl.com/rs5numty" target="_blank">
+            Give Feedback
+        </a>
 
-    <h3>📞 Expert Help (5pm - 7pm)</h3>
-    <p>
-        (Video and voice call support is available for solving your questions with expert assistance. Timings: 5:00 PM to 7:00 PM.)
-    </p>
+        <h3>📞 Expert Help (5pm - 7pm)</h3>
+        <p>
+            (Video and voice call support is available for solving your questions with expert assistance. Timings: 5:00
+            PM to 7:00 PM.)
+        </p>
 
-    <a class="linkBtn" style="background:#e1306c"
-       href="https://mail.google.com/mail/?view=cm&to=prime___software@outlook.com" target="_blank">
-        Email for  Video & Voice Call (prime___software@outlook.com)
-    </a>
+        <a class="linkBtn" style="background:#e1306c"
+            href="https://mail.google.com/mail/?view=cm&to=prime___software@outlook.com" target="_blank">
+            Email for Video & Voice Call (prime___software@outlook.com)
+        </a>
 
 
-<script>
+        <script>
 
-// DATA
-const data = {
-  History: [
-    {name:"Early Humans and the Stone Age", path:"history/stone.html"},
-  
-    {name:"Indus Valley Civilization", path:"history/ivc.html"},
-    {name:"Vedic Period", path:"history/vedic.html"},
-    {name:"Rise of Jainism and Buddhism", path:"history/jainism_buddhism.html"},
-    {name:"The Maurya Empire", path:"history/maurya.html"},
-    {name:"The Ancient South India", path:"history/ancient_south_india.html"},
-    {name:"Early Medieval India", path:"history/early_medieval.html"},
-    {name:"Delhi Sultanate", path:"history/delhi_sultanate.html"},
-    {name:"The Regional Kingdoms", path:"history/regional_kingdoms.html"},
-    {name:"The Mughal Period", path:"history/mughal.html"},
-    {name:"The Medieval Culture", path:"history/medieval_culture.html"},
-    {name:"The Arrival of Europeans", path:"history/europeans.html"},
-    {name:"The British Expansion", path:"history/british_expansion.html"},
-    {name:"Reform Movements", path:"history/reform_movements.html"},
-    {name:"Indian National Movement", path:"history/indian_national_movement.html"},
-    {name:"Revolutionary Movements", path:"history/revolt.html"},
-    
+            // DATA
+            const data = {
+                History: [
+                    { name: "Early Humans and the Stone Age", path: "history/stone.html" },
 
-  ],
-  Geography: [
-    {name:"The Earth and the Solar System", path:"geography/earth_solar_system.html"},
-    {name:"The Latitude and Longitude", path:"geography/latitude_longitude.html"},
-    {name:"The Structure of the Earth", path:"geography/structure_earth.html"},
-    {name:"Rocks and Minerals", path:"geography/rocks_minerals.html"},
-    {name:"The Volcanoes and Earthquakes", path:"geography/volcanoes_earthquakes.html"},
-    {name:"Landforms of the Earth", path:"geography/landforms_earth.html"},
-    {name:"Weather and Climate", path:"geography/weather_climate.html"},
-    {name:"Hydrosphere", path:"geography/hydrosphere.html"},
-    {name:"Soils", path:"geography/soils.html"},
-    {name:"Population", path:"geography/population.html"}
-    
-  ],
-  English: [
-    {name:"Parts of Speech", path:"english/parts_of_speech.html"},
-{name:"Tenses", path:"english/tenses.html"},
-{name:"Articles", path:"english/articles.html"},
-{name:"Subject–Verb Agreement", path:"english/subject_verb_agreement.html"},
-{name:"Active and Passive Voice", path:"english/active_passive_voice.html"},
-{name:"Direct and Indirect Speech", path:"english/direct_indirect_speech.html"},
-{name:"Modals", path:"english/modals.html"},
-{name:"Prepositions", path:"english/prepositions.html"},
-{name:"Conjunctions", path:"english/conjunctions.html"},
-{name:"Sentence Structure", path:"english/sentence_structure.html"},
-    
-  ],
-  Economics: [
-    {name:"Introduction to Economics", path:"economics/introduction_economics.html"},
-{name:"Consumer Behavior", path:"economics/consumer_behavior.html"},
-{name:"Producer Behavior", path:"economics/producer_behavior.html"},
-{name:"Market Structure", path:"economics/market_structure.html"},
-{name:"National Income", path:"economics/national_income.html"},
-{name:"Money and Banking", path:"economics/money_banking.html"},
-{name:"Inflation", path:"economics/inflation.html"},
-{name:"Public Finance", path:"economics/public_finance.html"},
-{name:"Development Economics", path:"economics/development_economics.html"},
-{name:"Indian Economy", path:"economics/indian_economy.html"},
-{name:"International Trade", path:"economics/international_trade.html"}
-    
+                    { name: "Indus Valley Civilization", path: "history/ivc.html" },
+                    { name: "Vedic Period", path: "history/vedic.html" },
+                    { name: "Rise of Jainism and Buddhism", path: "history/jainism_buddhism.html" },
+                    { name: "The Maurya Empire", path: "history/maurya.html" },
+                    { name: "The Ancient South India", path: "history/ancient_south_india.html" },
+                    { name: "Early Medieval India", path: "history/early_medieval.html" },
+                    { name: "Delhi Sultanate", path: "history/delhi_sultanate.html" },
+                    { name: "The Regional Kingdoms", path: "history/regional_kingdoms.html" },
+                    { name: "The Mughal Period", path: "history/mughal.html" },
+                    { name: "The Medieval Culture", path: "history/medieval_culture.html" },
+                    { name: "The Arrival of Europeans", path: "history/europeans.html" },
+                    { name: "The British Expansion", path: "history/british_expansion.html" },
+                    { name: "Reform Movements", path: "history/reform_movements.html" },
+                    { name: "Indian National Movement", path: "history/indian_national_movement.html" },
+                    { name: "Revolutionary Movements", path: "history/revolt.html" },
 
-  ],
-  Math: [
-    {name:"Number System", path:"math/number_system.html"},
-{name:"Algebra", path:"math/algebra.html"},
-{name:"Linear Equations", path:"math/linear_equations.html"},
-{name:"Geometry", path:"math/geometry.html"},
-{name:"Mensuration", path:"math/mensuration.html"},
-{name:"Trigonometry", path:"math/trigonometry.html"},
-{name:"Statistics", path:"math/statistics.html"},
-{name:"Probability", path:"math/probability.html"},
-{name:"Ratio and Proportion", path:"math/ratio_proportion.html"},
-{name:"Percentage", path:"math/percentage.html"},
-  ],
-  Physics: [
-    {name:"Motion", path:"physics/motion.html"},
-{name:"Force and Laws of Motion", path:"physics/force_laws_of_motion.html"},
-{name:"Work, Energy and Power", path:"physics/work_energy_power.html"},
-{name:"Gravitation", path:"physics/gravitation.html"},
-{name:"Heat and Thermodynamics", path:"physics/heat_thermodynamics.html"},
-{name:"Light (Optics)", path:"physics/light_optics.html"},
-{name:"Sound", path:"physics/sound.html"},
-{name:"Electricity", path:"physics/electricity.html"},
-{name:"Magnetism", path:"physics/magnetism.html"},
-{name:"Modern Physics (Basic Concepts)", path:"physics/modern_physics.html"},
-  ],
-  Chemistry: [
-    {name:"Matter and Its Nature", path:"chemistry/matter_and_its_nature.html"},
-{name:"Atomic Structure", path:"chemistry/atomic_structure.html"},
-{name:"Periodic Table", path:"chemistry/periodic_table.html"},
-{name:"Chemical Bonding", path:"chemistry/chemical_bonding.html"},
-{name:"Acids, Bases and Salts", path:"chemistry/acids_bases_salts.html"},
-{name:"States of Matter", path:"chemistry/states_of_matter.html"},
-{name:"Chemical Reactions", path:"chemistry/chemical_reactions.html"},
-{name:"Metals and Non-metals", path:"chemistry/metals_non_metals.html"},
-{name:"Carbon and Its Compounds", path:"chemistry/carbon_and_its_compounds.html"},
-{name:"Environmental Chemistry", path:"chemistry/environmental_chemistry.html"},
-  ],
-  Biology: [
-    {name:"Cell Structure and Function", path:"biology/cell_structure_and_function.html"},
-{name:"Tissues", path:"biology/tissues.html"},
-{name:"Diversity in Living Organisms", path:"biology/diversity_in_living_organisms.html"},
-{name:"Plant Life Processes", path:"biology/plant_life_processes.html"},
-{name:"Human Digestive System", path:"biology/human_digestive_system.html"},
-{name:"Human Respiratory System", path:"biology/human_respiratory_system.html"},
-{name:"Circulatory System", path:"biology/circulatory_system.html"},
-{name:"Nervous System", path:"biology/nervous_system.html"},
-{name:"Reproduction in Plants and Animals", path:"biology/reproduction_in_plants_and_animals.html"},
-{name:"Health and Disease", path:"biology/health_and_disease.html"},
-  ],
-  Board_Exam: [
-    {name:"CBSE Class 10", path:"board_exam/cbse_class_10.html"},
-    {name:"Bihar Board Class 10", path:"board_exam/bihar_board_class_10.html"},
-    {name:"CBSE Class 12", path:"board_exam/cbse_class_12.html"},
-    {name:"Bihar Board Class 12", path:"board_exam/bihar_board_class_12.html"},
-  ],
-  Competitive_Exam: [
-    {name:"SSC ", path:"competitive_exam/ssc.html"},
-    {name:"Railway", path:"competitive_exam/railway.html"},
-    {name:"Banking", path:"competitive_exam/banking.html"},
-    {name:"UPSC", path:"competitive_exam/upsc.html"},
-], 
-};
 
-const menu = document.getElementById("menu");
-const title = document.getElementById("title");
+                ],
+                Geography: [
+                    { name: "The Earth and the Solar System", path: "geography/earth_solar_system.html" },
+                    { name: "The Latitude and Longitude", path: "geography/latitude_longitude.html" },
+                    { name: "The Structure of the Earth", path: "geography/structure_earth.html" },
+                    { name: "Rocks and Minerals", path: "geography/rocks_minerals.html" },
+                    { name: "The Volcanoes and Earthquakes", path: "geography/volcanoes_earthquakes.html" },
+                    { name: "Landforms of the Earth", path: "geography/landforms_earth.html" },
+                    { name: "Weather and Climate", path: "geography/weather_climate.html" },
+                    { name: "Hydrosphere", path: "geography/hydrosphere.html" },
+                    { name: "Soils", path: "geography/soils.html" },
+                    { name: "Population", path: "geography/population.html" }
 
-// LOAD SUBJECTS
-function loadSubjects(){
-    title.innerText = "Select Subject";
-    menu.innerHTML = "";
+                ],
+                English: [
+                    { name: "Parts of Speech", path: "english/parts_of_speech.html" },
+                    { name: "Tenses", path: "english/tenses.html" },
+                    { name: "Articles", path: "english/articles.html" },
+                    { name: "Subject–Verb Agreement", path: "english/subject_verb_agreement.html" },
+                    { name: "Active and Passive Voice", path: "english/active_passive_voice.html" },
+                    { name: "Direct and Indirect Speech", path: "english/direct_indirect_speech.html" },
+                    { name: "Modals", path: "english/modals.html" },
+                    { name: "Prepositions", path: "english/prepositions.html" },
+                    { name: "Conjunctions", path: "english/conjunctions.html" },
+                    { name: "Sentence Structure", path: "english/sentence_structure.html" },
 
-    for(let subject in data){
-        let btn = document.createElement("button");
-        btn.innerText = subject;
-        btn.onclick = () => loadTopics(subject);
-        menu.appendChild(btn);
-    }
-}
+                ],
+                Economics: [
+                    { name: "Introduction to Economics", path: "economics/introduction_economics.html" },
+                    { name: "Consumer Behavior", path: "economics/consumer_behavior.html" },
+                    { name: "Producer Behavior", path: "economics/producer_behavior.html" },
+                    { name: "Market Structure", path: "economics/market_structure.html" },
+                    { name: "National Income", path: "economics/national_income.html" },
+                    { name: "Money and Banking", path: "economics/money_banking.html" },
+                    { name: "Inflation", path: "economics/inflation.html" },
+                    { name: "Public Finance", path: "economics/public_finance.html" },
+                    { name: "Development Economics", path: "economics/development_economics.html" },
+                    { name: "Indian Economy", path: "economics/indian_economy.html" },
+                    { name: "International Trade", path: "economics/international_trade.html" }
 
-// LOAD TOPICS
-function loadTopics(subject){
-    title.innerText = subject + " Topics";
-    menu.innerHTML = "";
 
-    data[subject].forEach(topic=>{
-        let btn = document.createElement("button");
-        btn.innerText = topic.name;
-        btn.onclick = () => window.location.href = topic.path;
-        menu.appendChild(btn);
-    });
+                ],
+                Math: [
+                    { name: "Number System", path: "math/number_system.html" },
+                    { name: "Algebra", path: "math/algebra.html" },
+                    { name: "Linear Equations", path: "math/linear_equations.html" },
+                    { name: "Geometry", path: "math/geometry.html" },
+                    { name: "Mensuration", path: "math/mensuration.html" },
+                    { name: "Trigonometry", path: "math/trigonometry.html" },
+                    { name: "Statistics", path: "math/statistics.html" },
+                    { name: "Probability", path: "math/probability.html" },
+                    { name: "Ratio and Proportion", path: "math/ratio_proportion.html" },
+                    { name: "Percentage", path: "math/percentage.html" },
+                ],
+                Physics: [
+                    { name: "Motion", path: "physics/motion.html" },
+                    { name: "Force and Laws of Motion", path: "physics/force_laws_of_motion.html" },
+                    { name: "Work, Energy and Power", path: "physics/work_energy_power.html" },
+                    { name: "Gravitation", path: "physics/gravitation.html" },
+                    { name: "Heat and Thermodynamics", path: "physics/heat_thermodynamics.html" },
+                    { name: "Light (Optics)", path: "physics/light_optics.html" },
+                    { name: "Sound", path: "physics/sound.html" },
+                    { name: "Electricity", path: "physics/electricity.html" },
+                    { name: "Magnetism", path: "physics/magnetism.html" },
+                    { name: "Modern Physics (Basic Concepts)", path: "physics/modern_physics.html" },
+                ],
+                Chemistry: [
+                    { name: "Matter and Its Nature", path: "chemistry/matter_and_its_nature.html" },
+                    { name: "Atomic Structure", path: "chemistry/atomic_structure.html" },
+                    { name: "Periodic Table", path: "chemistry/periodic_table.html" },
+                    { name: "Chemical Bonding", path: "chemistry/chemical_bonding.html" },
+                    { name: "Acids, Bases and Salts", path: "chemistry/acids_bases_salts.html" },
+                    { name: "States of Matter", path: "chemistry/states_of_matter.html" },
+                    { name: "Chemical Reactions", path: "chemistry/chemical_reactions.html" },
+                    { name: "Metals and Non-metals", path: "chemistry/metals_non_metals.html" },
+                    { name: "Carbon and Its Compounds", path: "chemistry/carbon_and_its_compounds.html" },
+                    { name: "Environmental Chemistry", path: "chemistry/environmental_chemistry.html" },
+                ],
+                Biology: [
+                    { name: "Cell Structure and Function", path: "biology/cell_structure_and_function.html" },
+                    { name: "Tissues", path: "biology/tissues.html" },
+                    { name: "Diversity in Living Organisms", path: "biology/diversity_in_living_organisms.html" },
+                    { name: "Plant Life Processes", path: "biology/plant_life_processes.html" },
+                    { name: "Human Digestive System", path: "biology/human_digestive_system.html" },
+                    { name: "Human Respiratory System", path: "biology/human_respiratory_system.html" },
+                    { name: "Circulatory System", path: "biology/circulatory_system.html" },
+                    { name: "Nervous System", path: "biology/nervous_system.html" },
+                    { name: "Reproduction in Plants and Animals", path: "biology/reproduction_in_plants_and_animals.html" },
+                    { name: "Health and Disease", path: "biology/health_and_disease.html" },
+                ],
+                Board_Exam: [
+                    { name: "CBSE Class 10", path: "board_exam/cbse_class_10.html" },
+                    { name: "Bihar Board Class 10", path: "board_exam/bihar_board_class_10.html" },
+                    { name: "CBSE Class 12", path: "board_exam/cbse_class_12.html" },
+                    { name: "Bihar Board Class 12", path: "board_exam/bihar_board_class_12.html" },
+                ],
+                Competitive_Exam: [
+                    { name: "SSC ", path: "competitive_exam/ssc.html" },
+                    { name: "Railway", path: "competitive_exam/railway.html" },
+                    { name: "Banking", path: "competitive_exam/banking.html" },
+                    { name: "UPSC", path: "competitive_exam/upsc.html" },
+                ],
+            };
 
-    let back = document.createElement("button");
-    back.innerText = "⬅ Back";
-    back.classList.add("back");
-    back.onclick = loadSubjects;
-    menu.appendChild(back);
-}
+            const menu = document.getElementById("menu");
+            const title = document.getElementById("title");
 
-loadSubjects();
+            // LOAD SUBJECTS
+            function loadSubjects() {
+                title.innerText = "Select Subject";
+                menu.innerHTML = "";
 
-/* ☰ MENU TOGGLE */
-function toggleMenu(){
-    const menu = document.getElementById("sideMenu");
-    const overlay = document.getElementById("overlay");
+                for (let subject in data) {
+                    let btn = document.createElement("button");
+                    btn.innerText = subject;
+                    btn.onclick = () => loadTopics(subject);
+                    menu.appendChild(btn);
+                }
+            }
 
-    if(menu.style.left === "0px"){
-        menu.style.left = "-260px";
-        overlay.style.display = "none";
-    }else{
-        menu.style.left = "0px";
-        overlay.style.display = "block";
-    }
-}
+            // LOAD TOPICS
+            function loadTopics(subject) {
+                title.innerText = subject + " Topics";
+                menu.innerHTML = "";
 
-</script>
+                data[subject].forEach(topic => {
+                    let btn = document.createElement("button");
+                    btn.innerText = topic.name;
+                    btn.onclick = () => window.location.href = topic.path;
+                    menu.appendChild(btn);
+                });
+
+                let back = document.createElement("button");
+                back.innerText = "⬅ Back";
+                back.classList.add("back");
+                back.onclick = loadSubjects;
+                menu.appendChild(back);
+            }
+
+            loadSubjects();
+
+            /* ☰ MENU TOGGLE */
+            function toggleMenu() {
+                const menu = document.getElementById("sideMenu");
+                const overlay = document.getElementById("overlay");
+
+                if (menu.style.left === "0px") {
+                    menu.style.left = "-260px";
+                    overlay.style.display = "none";
+                } else {
+                    menu.style.left = "0px";
+                    overlay.style.display = "block";
+                }
+            }
+
+        </script>
 
 </body>
+
 </html>
