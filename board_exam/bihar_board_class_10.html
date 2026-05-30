@@ -1,416 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BSEB Class 10 Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+    <!-- Primary SEO -->
+    <title>BSEB Class 10 MCQ Quiz 2025 | Hindi, English, Math, Science, SST</title>
+    <meta name="description"
+        content="Practice BSEB Class 10 board exam MCQ questions for Hindi, English, Mathematics, Science and Social Science. Free online quiz with instant answers and score.">
+    <meta name="keywords"
+        content="BSEB Class 10 MCQ, Bihar Board Class 10 Quiz, BSEB 2025 practice, Class 10 Hindi MCQ, Class 10 Science MCQ, Class 10 Math MCQ, Bihar Board exam preparation">
+    <meta name="author" content="BSEB Quiz">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Hindi, English">
 
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
-    padding:20px;
-}
+    <!-- Open Graph (WhatsApp, Facebook preview) -->
+    <meta property="og:title" content="BSEB Class 10 MCQ Quiz 2025">
+    <meta property="og:description"
+        content="Free MCQ practice for Bihar Board Class 10 — Hindi, English, Math, Science, Social Science with instant results.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="hi_IN">
 
-.quiz-container{
-    max-width:1000px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-}
+    <!-- Mobile & PWA -->
+    <meta name="theme-color" content="#1565C0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="BSEB Quiz">
 
-.subject-title{
-    background:#2196F3;
-    color:white;
-    padding:10px;
-    border-radius:5px;
-    margin-top:30px;
-}
+    <!-- Performance -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap');
 
-.question{
-    margin-bottom:20px;
-    padding:10px;
-    border-bottom:1px solid #ccc;
-}
+        :root {
+            --blue: #1565C0;
+            --blue-light: #E3F2FD;
+            --green: #2E7D32;
+            --red: #C62828;
+            --bg: #F0F4F8;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --border: #d0d7e3;
+            --tab-h: 52px;
+        }
 
-.option{
-    display:block;
-    padding:10px;
-    margin:5px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-    cursor:pointer;
-    background:#fafafa;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-.option:hover{
-    background:#eee;
-}
+        body {
+            font-family: 'Baloo 2', 'Noto Sans Devanagari', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+        }
 
-.correct{
-    background:#4CAF50;
-    color:white;
-}
+        /* ── Header ── */
+        .header {
+            background: var(--blue);
+            color: white;
+            padding: 16px 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+        }
 
-.wrong{
-    background:#f44336;
-    color:white;
-}
+        .header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: .3px;
+        }
 
-button{
-    padding:12px 25px;
-    font-size:18px;
-    background:#2196F3;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
+        /* ── Tabs ── */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
 
-#score{
-    margin-top:20px;
-    font-size:24px;
-    color:#333;
-}
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
 
-</style>
+        .tab {
+            flex-shrink: 0;
+            padding: 8px 18px;
+            border-radius: 8px 8px 0 0;
+            background: rgba(255, 255, 255, .18);
+            color: rgba(255, 255, 255, .85);
+            font-size: .88rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background .15s, color .15s;
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            background: var(--card);
+            color: var(--blue);
+        }
+
+        .tab:not(.active):hover {
+            background: rgba(255, 255, 255, .28);
+        }
+
+        /* ── Progress bar ── */
+        .progress-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, .25);
+            position: relative;
+            border-radius: 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #FFD54F;
+            border-radius: 2px;
+            transition: width .3s ease;
+            width: 0%;
+        }
+
+        /* ── Main content ── */
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px 16px 80px;
+        }
+
+        /* ── Subject panels (only active rendered) ── */
+        .subject-panel {
+            display: none;
+        }
+
+        .subject-panel.active {
+            display: block;
+        }
+
+        /* ── Question card ── */
+        .question {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px 10px;
+            margin-bottom: 14px;
+            contain: layout style;
+            /* layout containment = faster reflow */
+        }
+
+        .question h4 {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* ── Options ── */
+        .option {
+            display: block;
+            padding: 9px 12px;
+            margin: 5px 0;
+            border: 1.5px solid var(--border);
+            border-radius: 7px;
+            cursor: pointer;
+            background: #fafafa;
+            font-size: .9rem;
+            line-height: 1.4;
+            /* GPU-composited only — zero layout cost */
+            will-change: transform;
+            transition: border-color .1s;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .option:active {
+            transform: scale(.99);
+        }
+
+        /* colour changes via class — no JS style mutation */
+        .option.correct {
+            background: #E8F5E9;
+            border-color: var(--green);
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .option.wrong {
+            background: #FFEBEE;
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* ── Done overlay (blocks re-tap without JS re-check) ── */
+        .question.done .option {
+            pointer-events: none;
+        }
+
+        /* ── Score section ── */
+        .score-section {
+            background: var(--card);
+            border: 2px solid var(--blue);
+            border-radius: 12px;
+            text-align: center;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .score-section h2 {
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+
+        .score-section p {
+            color: #555;
+            font-size: .9rem;
+        }
+
+        /* ── Submit button ── */
+        .submit-wrap {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, var(--bg) 40%);
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .submit-btn {
+            pointer-events: all;
+            padding: 13px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            background: var(--blue);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(21, 101, 192, .4);
+            transition: transform .1s, box-shadow .1s;
+        }
+
+        .submit-btn:active {
+            transform: scale(.97);
+            box-shadow: 0 2px 6px rgba(21, 101, 192, .3);
+        }
+
+        /* ── Scoreboard ── */
+        #scoreboard {
+            display: none;
+        }
+
+        #scoreboard.show {
+            display: block;
+        }
+
+        .subject-scores {
+            margin-top: 10px;
+        }
+
+        .subj-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .9rem;
+        }
+
+        /* ── Stats badge on tabs ── */
+        .tab-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, .25);
+            color: white;
+            font-size: .7rem;
+            border-radius: 10px;
+            padding: 0 6px;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        .tab.active .tab-badge {
+            background: var(--blue-light);
+            color: var(--blue);
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="quiz-container">
-
-<h1>BSEB Class 10 MCQ Quiz</h1>
-
-<div id="quiz"></div>
-
-<button onclick="showScore()">Submit Quiz</button>
-
-<h2 id="score"></h2>
-
-</div>
-
-<script>
-
-const quizData = [
-
-{
-subject:"Hindi",
-questions:[
-
-{q:"‘बुढ़ापे में इन्सान बिल्कुल बच्चा बन जाता है।’ इस वाक्य में ‘बुढ़ापे’ कौन सी संज्ञा है ?", options:["जातिवाचक","व्यक्तिवाचक","भाववाचक","समूहवाचक"], answer:2},
-
-{q:"विशेषण के मुख्यतः कितने भेद हैं ?", options:["चार","तीन","पाँच","दो"], answer:0},
-
-{q:"‘आपने क्या खाया है ?’ इस वाक्य में ‘क्या’ कौन सा सर्वनाम है ?", options:["निश्चयवाचक सर्वनाम","अनिश्चयवाचक","प्रश्नवाचक सर्वनाम","पुरुषवाचक सर्वनाम"], answer:2},
-
-{q:"भविष्यत्काल के कितने प्रकार हैं ?", options:["चार","तीन","दो","पाँच"], answer:1},
-
-{q:"‘दध्योदन’ का संधि-विच्छेद क्या है ?", options:["दधि + उदन","दधि + ओदन","दधि + ऊदन","दधि + औदन"], answer:1},
-
-{q:"‘राम ने भिखारी को पैसे दिए।’ इस वाक्य में ‘को’ किस कारक की विभक्ति है?", options:["कर्म","सम्प्रदान","सम्बन्ध","करण"], answer:1},
-
-{q:"‘लौहपुरुष’ में कौन सा समास है ?", options:["द्वंद्व","नञ्","कर्मधारय","द्विगु"], answer:2},
-
-{q:"‘निर्जन’ में कौन सा उपसर्ग है ?", options:["नि","निर्","नी","निर्"], answer:1},
-
-{q:"निम्नलिखित शब्दों में कौन-सा शब्द शुद्ध है ?", options:["शोनित","शोनीत","शोणित","शोणीत"], answer:2},
-
-{q:"यदि ‘ए’ के बाद कोई भी भिन्न स्वर आए, तो ‘ए’ किसमें परिवर्तित हो जाता है ?", options:["आय्","अय्","अव्","आय्"], answer:1},
-
-{q:"निम्नलिखित वाक्यों में कौन-सा वाक्य शुद्ध है ?", options:["आपके दर्शन कब होंगे?","मैंने यह काम करा है।","प्यास से झेठ सूख रहा था।","मेरा बात सुनो ।"], answer:0},
-
-{q:"‘हाथ साफ करना’ मुहावरे का सही अर्थ क्या है ?", options:["हाथ धोना","सफाई करना","चोरी करना","गंदगी फैलना"], answer:2},
-
-{q:"निम्नलिखित शब्दों में कौन-सा शब्द शुद्ध है ?", options:["हितैसी","हितैशी","हितैषी","हितैषि"], answer:2},
-
-{q:"‘अतिम’ में कौन सा प्रत्यय है ?", options:["म","तिम","इम","तम"], answer:2},
-
-{q:"‘अष्टाध्यायी’ में कौन-सा समास है ?", options:["द्विगु","अव्ययीभाव","बहुब्रीहि","नञ्"], answer:0},
-
-{q:"भारत में बेरोजगारी का एक प्रमुख व अप्रत्यक्ष कारण क्या है ?", options:["सती-प्रथा","दहेज प्रथा","जाति प्रथा","बाल-विवाह प्रथा"], answer:2},
-
-{q:"‘पेड़ का कमरा’ किसकी रचना है ?", options:["विनोद कुमार शुक्ल","अशोक वाजपेयी","अमरकांत","यतीन्द्र मिश्र"], answer:0},
-
-{q:"‘बी. आर. नारायण’ ने किस कहानी का अनुवाद किया है ?", options:["ढहते विश्वास","दही वाली मंगम्मा","नगर","माँ"], answer:1},
-
-{q:"कवयित्री अनामिका का जन्म कब हुआ?", options:["1961 ई०","1962 ई०","1963 ई०","1964 ई०"], answer:0},
-
-{q:"घनानंद की भाषा क्या है ?", options:["अवधी","ब्रजभाषा","प्राकृत","पाली"], answer:1},
-
-{q:"किसके अनुसार सेनों ने सिद्धान्तों को भी बदल दिया था ?", options:["बेटियों के अनुसार","खोखा के अनुसार","मदन के अनुसार","गिरधर के अनुसार"], answer:1},
-
-{q:"दारिस नामक सोने के सिक्कों से भरा घड़ा किसे मिला था ?", options:["हेकल","हकर्स","वारेन हेस्टिंग","विलियम जोन्स"], answer:2},
-
-{q:"‘ढहते विश्वास’ किस भाषा से अनुदित है ?", options:["कन्नड़","तमिल","उड़िया","गुजराती"], answer:2},
-
-{q:"‘दूर-चट्टानों की ठंडी गोद में’ किस कवि की पंक्ति है ?", options:["जीवनानंद दास","अनामिका","सुमित्रानंदन पंत","रेनर मारिया रिल्के"], answer:3},
-
-{q:"जीवनानंद दास की किस कविता को प्रबुद्ध आलोचकों द्वारा रवींद्रोत्तर युग की श्रेष्ठतम प्रेम कविता की संज्ञा दी गई है ?", options:["मनविहंगम","वनलता सेन","रूपसी बंग्ला","झरा पालक"], answer:1},
-
-{q:"आध्यात्मिक शिक्षा से गांधीजी का क्या अभिप्राय है ?", options:["पुस्तक की शिक्षा","यंत्रों की शिक्षा","बुद्धि की शिक्षा","हृदय की शिक्षा"], answer:3},
-
-{q:"‘आविन्यों में उन्नीस दिनों के प्रवास के दौरान लेखक ने कितने गद्य की रचना की?", options:["27","28","29","30"], answer:0},
-
-{q:"‘धरती कब तक घूमेगी’ किस भाषा से अनुदित कहानी है ?", options:["उड़िया","गुजराती","राजस्थानी","कन्नड़"], answer:2},
-
-{q:"पाप्पाति को कौन सा रोग था ?", options:["टिटनेस","हैजा","कैंसर","मेनिनजाइटिस"], answer:3},
-
-{q:"वीरेन डंगवाल को किस कृति के लिए साहित्य अकादमी पुरस्कार मिला है ?", options:["इसी दुनिया में","दुष्चक्र में सृष्टा","पहल पुस्तिका","कवि ने कहा"], answer:1},
-
-{q:"परदेश की विद्या पढ़ने का क्या परिणाम हुआ ?", options:["सबकी बुद्धि भारतीय हो गई।","सबकी बुद्धि विदेशी हो गई।","सबकी बुद्धि आध्यात्मिक हो गई।","उपर्युक्त सभी"], answer:1},
-
-{q:"‘नगर’ कहानी किस लेखक द्वारा रचित है ?", options:["ईश्वर पेटलीकार","सातकोड़ी होता","सुजाता","श्रीनिवास"], answer:2},
-
-{q:"लेखक के अनुसार मनुष्य के नाखून किसके जीवंत प्रतीक हैं ?", options:["मनुष्यता के","सभ्यता के","पाश्वी वृत्ति के","सौन्दर्य के"], answer:2},
-
-{q:"हजारी प्रसाद द्विवेदी का जन्म कब हुआ?", options:["1907 ई०","1906 ई०","1905 ई०","1904 ई०"], answer:0},
-
-{q:"‘रहिरास’ किसकी रचना है ?", options:["गुरु गोविन्द सिंह","नानक","नानक","घनानंद"], answer:1},
-
-{q:"लक्ष्मी के बड़े पुत्र का क्या नाम था ?", options:["अच्युत","गुणनिधि","लक्ष्मण","शंकर"], answer:0},
-
-{q:"‘एक वृक्ष की हत्या’ में कवि शहर को किससे बचाने की बात करता ?", options:["लुटेरों से","देश के दुश्मनों से","नादिरों से","इनमें से कोई नहीं"], answer:2},
-
-{q:"गाँधी जी का दक्षिण अफ्रीका प्रवास कब से कब तक था ?", options:["1893 ई० से 1914 ई० तक","1892 ई० से 1913 ई० तक","1894 ई० से 1914 ई० तक","1893 ई० से 1913 ई० तक"], answer:0},
-
-{q:"जब पं० बिरजू महाराज को संगीत नाटक अकादेमी आवार्ड मिला तब उनकी उम्र क्या थी?", options:["27 वर्ष","26 वर्ष","25 वर्ष","24 वर्ष"], answer:0},
-
-{q:"कवि ने माली-मालिन किसे कहा है ?", options:["शंकर-पार्वती","गणेश-लक्ष्मी","कृष्ण-राधा","राम-सीता"], answer:2},
-
-{q:"मंगु के अलावा उसकी माँ की कितनी संताने थीं?", options:["दो","तीन","चार","एक"], answer:1},
-
-{q:"अज्ञेय का जन्म कब हुआ?", options:["1910 ई०","1911 ई०","1912 ई०","1913 ई०"], answer:1},
-
-{q:"दिनकर की किस कृति के लिए ज्ञानपीठ पुरस्कार मिला है ?", options:["रश्मिरथी","संस्कृति के चार अध्याय","उर्वशी","रेणुका"], answer:2},
-
-{q:"‘नौबतखाने में इबादत’ साहित्य की कौन-सी विधा है ?", options:["निबंध","कहानी","व्यक्तिचित्र","साक्षात्कार"], answer:2},
-
-{q:"पंडित बिरजू महाराज लखनऊ घराने की किस पीढ़ी के कलाकार थे ?", options:["छठी पीढ़ी","सातवीं पीढ़ी","नौवीं पीढ़ी","आठवीं पीढ़ी"], answer:1},
-
-{q:"सीता के बेटों ने सीता को कितने रुपये माहवारी खर्च देने का निर्णय लिया ?", options:["50 रुपये","75 रुपये","100 रुपये","60 रुपये"], answer:0},
-
-{q:"उत्तर भारत से नागरी लिपि के लेख कब से मिलने लगते हैं ?", options:["आठवीं सदी","छठी सदी","नौवीं सदी","चौथी सदी"], answer:0},
-
-{q:"बहादुर को कितने रुपये की चोरी का इल्जाम लगा था ?", options:["10 रुपये","11 रुपये","12 रुपये","13 रुपये"], answer:1},
-
-{q:"‘भारतमाता’ कविता में भारत का कैसा चित्र प्रस्तुत किया गया है ?", options:["आदर्श","काल्पनिक","यथातथ्य","इनमें से कोई नहीं"], answer:2},
-
-{q:"जातीय अस्मिता की दृष्टि से इतिहास का प्रवाह कैसा है ?", options:["विच्छिन्न","अविच्छिन्न","विच्छिन्न और अविच्छिन्न दोनों","इनमें से कोई नहीं"], answer:2},
-
-]
-},
-
-{
-subject:"English",
-questions:[
-
-{q:"The main character in 'Pace for Living' was a/an…………com merchant-", options:["elderly","handicapped","young","diabetic"], answer:0},
-{q:"The author admits that quick travel does not give the traveller the real…………of travel-", options:["pains","pleasure","living","holiday"], answer:1},
-{q:"Jim asked Mr. Greene to keep the old newspapers for the school-going children, who…………them-", options:["burnt","bought","read","colected"], answer:3},
-{q:"Jim told Mr. Johnson that it would reduce…………and save ecology if he did not use his car for short distances-", options:["petrol","pollution","weight","diesel"], answer:1},
-{q:"When the narrator sat down to write, Gillu wanted to catch her…………-", options:["attention","pen","papers","hair"], answer:0},
-{q:"Gillu’s favourite food was", options:["rice","bread","kaju","jam"], answer:2},
-{q:"In 'What is wrong with Indian Films?' the author compares Indian films…………films", options:["Korean","Japanese","Western","Pakistani"], answer:2},
-{q:"The Cinema…………in various measures the function of poetry, music painting, drama, architecture and a host of other arts-", options:["combines","destroys","deletes","rescues"], answer:0},
-{q:"Aris firmly believed that his mother would have accepted the prize for all the…………of Burma-", options:["people","monks","politicians","soldiers"], answer:0},
-{q:"Who is the writer of 'Acceptance Speech'?", options:["Toni Morrison","Aung San Suu Kyi","Jon Lexau","Leo Tolstoy"], answer:1},
-
-{q:"The old woman was…………enough to know she could not help the young people-", options:["stupid","intelligent","strong","suspicious"], answer:1},
-{q:"Who is the writer of 'Once upon a Time'?", options:["R.C. Hutchinson","Toni Morrison","Leo Tolstoy","Satyajit Ray"], answer:1},
-{q:"Indians have shown the power to make…………changes-", options:["big","little","monstrous","gigantic"], answer:0},
-{q:"Where have old civilisation and culture grown and changed?", options:["Indian and China","England","America","None of these"], answer:0},
-{q:"The old woman tried to make everyone understand that the day should be spent…………-", options:["sadly","happily","angrily","jealously"], answer:1},
-{q:"Which festival is referred to in 'Little Girls Wiser than Men'?", options:["Holi","Diwali","Easter","None of these"], answer:2},
-{q:"The townspeople do not enjoy any real…………-", options:["scenery","food","drink","fun"], answer:0},
-{q:"A happy man’s wants are satisfied by the property inherited by him from his…………-", options:["uncle","mother","cousin","father"], answer:3},
-{q:"'Polythene Bag' has been composed by…………-", options:["Durga Prasad Panda","Periasamy Thooran","Puran Singh","Laxmi Prasad Devkota"], answer:0},
-{q:"Lord Krishna had not met…………for some time-", options:["Radha","Sudama","Vidyapati","Yashoda"], answer:0},
-
-{q:"There was a…………which had the power to grant wishes-", options:["snake","pigeon","tree","temple"], answer:2},
-{q:"The Koel wakes in the poet’s soul a thousand…………-", options:["dreams","desires","memories","longings"], answer:2},
-{q:"The porter’s…………beat was fast-", options:["pulse","heart","nerves","muscles"], answer:1},
-{q:"Martha used to tell her stories in the hazel…………-", options:["forest","mountain","riverbank","glen"], answer:3},
-{q:"Munni advised Haiku to hire himself out as a…………-", options:["tenant","labourer","farmer","shopkeeper"], answer:1},
-{q:"A person has to be exposed to the particular…………to become allergic-", options:["symptom","antigen","allergen","protein"], answer:2},
-{q:"The banker decided to murder the…………-", options:["guard","servant","gardener","lawyer"], answer:3},
-{q:"For Mr. Gessler, boot making was a/an…………-", options:["art","burden","job","time pass"], answer:0},
-{q:"Sun and Moon went downstairs to meet the…………-", options:["guests","relatives","neighbours","friends"], answer:0},
-{q:"'Love Defiled' is about the narrator’s relationship with his…………-", options:["brother","girl friend","sister","cousin"], answer:1},
-
-{q:"Is he writing a story?", options:["A story is written by him","Is a story being written by him?","Is a story written by him","None of these"], answer:1},
-{q:"We should not punish him.", options:["He should not punished by us","He should be punished by us","He should not be punished by us","None of these"], answer:2},
-{q:"She helped me.", options:["I was helping her","I was helped by her","I was helping by her","None of these"], answer:1},
-{q:"She said to her daughter, 'Study well…'", options:["She advised her daughter to study well","She advised her for study","She advised to study","She advised study"], answer:0},
-{q:"He says, 'I am going to Patna'.", options:["He says that I am going to Patna","He says that he is going to Patna","He said he is going","None of these"], answer:1},
-{q:"He said to me, 'What do you want?'", options:["He asked me what I wanted","He asked what do I want","He asks what I want","None of these"], answer:0},
-
-{q:"Rice and Curry…………his favourite food.", options:["is","are","were","have"], answer:0},
-{q:"The honest…………poor.", options:["is","are","was","none of these"], answer:1},
-{q:"Nothing but snow…………seen.", options:["have","are","has","none of these"], answer:3},
-
-{q:"He is known…………me.", options:["to","on","with","from"], answer:0},
-{q:"He went to the village…………foot.", options:["from","by","on","in"], answer:2},
-{q:"The rat is afraid…………cat.", options:["at","of","for","from"], answer:1},
-
-{q:"Correct spelling:", options:["Auditorim","Auditorium","Auditarium","Auditorum"], answer:1},
-{q:"Correct spelling:", options:["Professor","Proffessor","Profesor","Profesar"], answer:0},
-{q:"Correct spelling:", options:["Neighbouring","Neghboring","Neboring","Negbouring"], answer:0},
-
-{q:"आज बहुत गर्मी पड़ रही है (correct option given)", options:["The train had started before I reach the station.","The train had started before I reached the station.","The train has started before I reached the station.","None of these"], answer:1},
-{q:"तैरना एक कला है", options:["Swimming are an art","Swimming is an art","Swimming is a art","None of these"], answer:1},
-{q:"मैं तैरना जानता हूँ", options:["The people of all religions lives here","The people of all realigion lived here","The people of all religions live here","None of these"], answer:2},
-{q:"मेरे स्टेशन पहुंचने के पहले गाड़ी खुल थी", options:["It is hot today","It was extremely hot today","It was hot today","None of these"], answer:3}
-]
-},
-
-{
-subject:"Mathematics",
-questions:[
-
-{q:"Value of π is? / मान?", options:["3.14","2.14","1.14","4.14"], answer:0},
-
-{q:"Square root of 144? / वर्गमूल?", options:["12","11","10","14"], answer:0},
-
-{q:"Area of circle formula? / सूत्र?", options:["πr²","2πr","πd","r²"], answer:0},
-
-{q:"15% of 200 is? / मान?", options:["30","20","25","35"], answer:0},
-
-{q:"Zero of x² - 4? / शून्यक?", options:["2 and -2","2 only","-2 only","0"], answer:0}
-
-]
-},
-
-{
-subject:"Science",
-questions:[
-
-{q:"Organic chemistry is study of? / अध्ययन?", options:["Carbon compounds","Metals","Gases only","Water only"], answer:0},
-
-{q:"Soap is made from? / साबुन?", options:["Fat + alkali","Acid + metal","Gas + gas","Water only"], answer:0},
-
-{q:"Detergent is? / डिटर्जेंट?", options:["Cleaning agent","Metal","Gas","Acid"], answer:0},
-
-{q:"Carbon burns in oxygen gives? / जलने पर?", options:["CO2","CO","O2","H2O"], answer:0},
-
-{q:"Incomplete combustion produces? / अपूर्ण दहन?", options:["CO","CO2","O2","H2"], answer:0},
-
-{q:"Chemical formula of water? / सूत्र?", options:["H2O","CO2","NaCl","O2"], answer:0},
-
-{q:"SI unit of force? / मात्रक?", options:["Newton","Joule","Pascal","Watt"], answer:0},
-
-{q:"Plants prepare food by? / भोजन?", options:["Photosynthesis","Respiration","Digestion","Excretion"], answer:0}
-
-]
-},
-
-{
-subject:"Social Science",
-questions:[
-
-{q:"First President of India? / प्रथम राष्ट्रपति?", options:["Rajendra Prasad","Nehru","Patel","Gandhi"], answer:0},
-
-{q:"Capital of Bihar? / राजधानी?", options:["Patna","Delhi","Ranchi","Lucknow"], answer:0},
-
-{q:"India became independent in? / स्वतंत्रता?", options:["1947","1945","1950","1942"], answer:0},
-
-{q:"Largest democracy in world? / सबसे बड़ा लोकतंत्र?", options:["India","USA","Russia","China"], answer:0},
-
-{q:"Who discovered sea route to India? / समुद्री मार्ग?", options:["Vasco da Gama","Columbus","Cook","Magellan"], answer:0}
-
-]
-}
-
-];
-
-let score = 0;
-
-function loadQuiz() {
-
-    const quiz = document.getElementById("quiz");
-
-    const frag = document.createDocumentFragment(); // FAST render buffer
-
-    quizData.forEach((subjectData) => {
-
-        const subjectTitle = document.createElement("h2");
-        subjectTitle.className = "subject-title";
-        subjectTitle.textContent = subjectData.subject;
-        frag.appendChild(subjectTitle);
-
-        subjectData.questions.forEach((item, qIndex) => {
-
-            const div = document.createElement("div");
-            div.className = "question";
-
-            // store correct answer directly (FAST access)
-            div.dataset.answer = item.answer;
-            div.dataset.done = "0";
-
-            const q = document.createElement("h4");
-            q.textContent = `${qIndex + 1}. ${item.q}`;
-            div.appendChild(q);
-
-            const optionsFrag = document.createDocumentFragment();
-
-            for (let i = 0; i < item.options.length; i++) {
-
-                const opt = document.createElement("div");
-                opt.className = "option";
-
-                // store index for instant compare
-                opt.dataset.index = i;
-                opt.textContent = item.options[i];
-
-                optionsFrag.appendChild(opt);
+    <div class="header">
+        <h1>📚 BSEB Class 10 MCQ Quiz</h1>
+        <div class="tabs" id="tabs"></div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <div class="content" id="content"></div>
+
+    <div class="submit-wrap">
+        <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+
+    <script>
+        /* ─────────────────────────────────────────
+           QUIZ DATA
+        ───────────────────────────────────────── */
+        const quizData = [
+            {
+                subject: "Hindi", questions: [
+                    { q: "'बुढ़ापे में इन्सान बिल्कुल बच्चा बन जाता है।' इस वाक्य में 'बुढ़ापे' कौन सी संज्ञा है ?", options: ["जातिवाचक", "व्यक्तिवाचक", "भाववाचक", "समूहवाचक"], answer: 2 },
+                    { q: "विशेषण के मुख्यतः कितने भेद हैं ?", options: ["चार", "तीन", "पाँच", "दो"], answer: 0 },
+                    { q: "'आपने क्या खाया है ?' इस वाक्य में 'क्या' कौन सा सर्वनाम है ?", options: ["निश्चयवाचक सर्वनाम", "अनिश्चयवाचक", "प्रश्नवाचक सर्वनाम", "पुरुषवाचक सर्वनाम"], answer: 2 },
+                    { q: "भविष्यत्काल के कितने प्रकार हैं ?", options: ["चार", "तीन", "दो", "पाँच"], answer: 1 },
+                    { q: "'दध्योदन' का संधि-विच्छेद क्या है ?", options: ["दधि + उदन", "दधि + ओदन", "दधि + ऊदन", "दधि + औदन"], answer: 1 },
+                    { q: "'राम ने भिखारी को पैसे दिए।' इस वाक्य में 'को' किस कारक की विभक्ति है?", options: ["कर्म", "सम्प्रदान", "सम्बन्ध", "करण"], answer: 1 },
+                    { q: "'लौहपुरुष' में कौन सा समास है ?", options: ["द्वंद्व", "नञ्", "कर्मधारय", "द्विगु"], answer: 2 },
+                    { q: "'निर्जन' में कौन सा उपसर्ग है ?", options: ["नि", "निर्", "नी", "निर्"], answer: 1 },
+                    { q: "निम्नलिखित शब्दों में कौन-सा शब्द शुद्ध है ?", options: ["शोनित", "शोनीत", "शोणित", "शोणीत"], answer: 2 },
+                    { q: "यदि 'ए' के बाद कोई भी भिन्न स्वर आए, तो 'ए' किसमें परिवर्तित हो जाता है ?", options: ["आय्", "अय्", "अव्", "आय्"], answer: 1 },
+                    { q: "निम्नलिखित वाक्यों में कौन-सा वाक्य शुद्ध है ?", options: ["आपके दर्शन कब होंगे?", "मैंने यह काम करा है।", "प्यास से झेठ सूख रहा था।", "मेरा बात सुनो ।"], answer: 0 },
+                    { q: "'हाथ साफ करना' मुहावरे का सही अर्थ क्या है ?", options: ["हाथ धोना", "सफाई करना", "चोरी करना", "गंदगी फैलना"], answer: 2 },
+                    { q: "निम्नलिखित शब्दों में कौन-सा शब्द शुद्ध है ?", options: ["हितैसी", "हितैशी", "हितैषी", "हितैषि"], answer: 2 },
+                    { q: "'अतिम' में कौन सा प्रत्यय है ?", options: ["म", "तिम", "इम", "तम"], answer: 2 },
+                    { q: "'अष्टाध्यायी' में कौन-सा समास है ?", options: ["द्विगु", "अव्ययीभाव", "बहुब्रीहि", "नञ्"], answer: 0 },
+                    { q: "भारत में बेरोजगारी का एक प्रमुख व अप्रत्यक्ष कारण क्या है ?", options: ["सती-प्रथा", "दहेज प्रथा", "जाति प्रथा", "बाल-विवाह प्रथा"], answer: 2 },
+                    { q: "'पेड़ का कमरा' किसकी रचना है ?", options: ["विनोद कुमार शुक्ल", "अशोक वाजपेयी", "अमरकांत", "यतीन्द्र मिश्र"], answer: 0 },
+                    { q: "'बी. आर. नारायण' ने किस कहानी का अनुवाद किया है ?", options: ["ढहते विश्वास", "दही वाली मंगम्मा", "नगर", "माँ"], answer: 1 },
+                    { q: "कवयित्री अनामिका का जन्म कब हुआ?", options: ["1961 ई०", "1962 ई०", "1963 ई०", "1964 ई०"], answer: 0 },
+                    { q: "घनानंद की भाषा क्या है ?", options: ["अवधी", "ब्रजभाषा", "प्राकृत", "पाली"], answer: 1 },
+                    { q: "किसके अनुसार सेनों ने सिद्धान्तों को भी बदल दिया था ?", options: ["बेटियों के अनुसार", "खोखा के अनुसार", "मदन के अनुसार", "गिरधर के अनुसार"], answer: 1 },
+                    { q: "दारिस नामक सोने के सिक्कों से भरा घड़ा किसे मिला था ?", options: ["हेकल", "हकर्स", "वारेन हेस्टिंग", "विलियम जोन्स"], answer: 2 },
+                    { q: "'ढहते विश्वास' किस भाषा से अनुदित है ?", options: ["कन्नड़", "तमिल", "उड़िया", "गुजराती"], answer: 2 },
+                    { q: "'दूर-चट्टानों की ठंडी गोद में' किस कवि की पंक्ति है ?", options: ["जीवनानंद दास", "अनामिका", "सुमित्रानंदन पंत", "रेनर मारिया रिल्के"], answer: 3 },
+                    { q: "जीवनानंद दास की किस कविता को प्रबुद्ध आलोचकों द्वारा रवींद्रोत्तर युग की श्रेष्ठतम प्रेम कविता की संज्ञा दी गई है ?", options: ["मनविहंगम", "वनलता सेन", "रूपसी बंग्ला", "झरा पालक"], answer: 1 },
+                    { q: "आध्यात्मिक शिक्षा से गांधीजी का क्या अभिप्राय है ?", options: ["पुस्तक की शिक्षा", "यंत्रों की शिक्षा", "बुद्धि की शिक्षा", "हृदय की शिक्षा"], answer: 3 },
+                    { q: "'आविन्यों में उन्नीस दिनों के प्रवास के दौरान लेखक ने कितने गद्य की रचना की?", options: ["27", "28", "29", "30"], answer: 0 },
+                    { q: "'धरती कब तक घूमेगी' किस भाषा से अनुदित कहानी है ?", options: ["उड़िया", "गुजराती", "राजस्थानी", "कन्नड़"], answer: 2 },
+                    { q: "पाप्पाति को कौन सा रोग था ?", options: ["टिटनेस", "हैजा", "कैंसर", "मेनिनजाइटिस"], answer: 3 },
+                    { q: "वीरेन डंगवाल को किस कृति के लिए साहित्य अकादमी पुरस्कार मिला है ?", options: ["इसी दुनिया में", "दुष्चक्र में सृष्टा", "पहल पुस्तिका", "कवि ने कहा"], answer: 1 },
+                    { q: "परदेश की विद्या पढ़ने का क्या परिणाम हुआ ?", options: ["सबकी बुद्धि भारतीय हो गई।", "सबकी बुद्धि विदेशी हो गई।", "सबकी बुद्धि आध्यात्मिक हो गई।", "उपर्युक्त सभी"], answer: 1 },
+                    { q: "'नगर' कहानी किस लेखक द्वारा रचित है ?", options: ["ईश्वर पेटलीकर", "सातकोड़ी होता", "सुजाता", "श्रीनिवास"], answer: 2 },
+                    { q: "लेखक के अनुसार मनुष्य के नाखून किसके जीवंत प्रतीक हैं ?", options: ["मनुष्यता के", "सभ्यता के", "पाश्वी वृत्ति के", "सौन्दर्य के"], answer: 2 },
+                    { q: "हजारी प्रसाद द्विवेदी का जन्म कब हुआ?", options: ["1907 ई०", "1906 ई०", "1905 ई०", "1904 ई०"], answer: 0 },
+                    { q: "'रहिरास' किसकी रचना है ?", options: ["गुरु गोविन्द सिंह", "नानक", "नानक", "घनानंद"], answer: 1 },
+                    { q: "लक्ष्मी के बड़े पुत्र का क्या नाम था ?", options: ["अच्युत", "गुणनिधि", "लक्ष्मण", "शंकर"], answer: 0 },
+                    { q: "'एक वृक्ष की हत्या' में कवि शहर को किससे बचाने की बात करता ?", options: ["लुटेरों से", "देश के दुश्मनों से", "नादिरों से", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "गाँधी जी का दक्षिण अफ्रीका प्रवास कब से कब तक था ?", options: ["1893 ई० से 1914 ई० तक", "1892 ई० से 1913 ई० तक", "1894 ई० से 1914 ई० तक", "1893 ई० से 1913 ई० तक"], answer: 0 },
+                    { q: "जब पं० बिरजू महाराज को संगीत नाटक अकादेमी आवार्ड मिला तब उनकी उम्र क्या थी?", options: ["27 वर्ष", "26 वर्ष", "25 वर्ष", "24 वर्ष"], answer: 0 },
+                    { q: "कवि ने माली-मालिन किसे कहा है ?", options: ["शंकर-पार्वती", "गणेश-लक्ष्मी", "कृष्ण-राधा", "राम-सीता"], answer: 2 },
+                    { q: "मंगु के अलावा उसकी माँ की कितनी संताने थीं?", options: ["दो", "तीन", "चार", "एक"], answer: 1 },
+                    { q: "अज्ञेय का जन्म कब हुआ?", options: ["1910 ई०", "1911 ई०", "1912 ई०", "1913 ई०"], answer: 1 },
+                    { q: "दिनकर की किस कृति के लिए ज्ञानपीठ पुरस्कार मिला है ?", options: ["रश्मिरथी", "संस्कृति के चार अध्याय", "उर्वशी", "रेणुका"], answer: 2 },
+                    { q: "'नौबतखाने में इबादत' साहित्य की कौन-सी विधा है ?", options: ["निबंध", "कहानी", "व्यक्तिचित्र", "साक्षात्कार"], answer: 2 },
+                    { q: "पंडित बिरजू महाराज लखनऊ घराने की किस पीढ़ी के कलाकार थे ?", options: ["छठी पीढ़ी", "सातवीं पीढ़ी", "नौवीं पीढ़ी", "आठवीं पीढ़ी"], answer: 1 },
+                    { q: "सीता के बेटों ने सीता को कितने रुपये माहवारी खर्च देने का निर्णय लिया ?", options: ["50 रुपये", "75 रुपये", "100 रुपये", "60 रुपये"], answer: 0 },
+                    { q: "उत्तर भारत से नागरी लिपि के लेख कब से मिलने लगते हैं ?", options: ["आठवीं सदी", "छठी सदी", "नौवीं सदी", "चौथी सदी"], answer: 0 },
+                    { q: "बहादुर को कितने रुपये की चोरी का इल्जाम लगा था ?", options: ["10 रुपये", "11 रुपये", "12 रुपये", "13 रुपये"], answer: 1 },
+                    { q: "'भारतमाता' कविता में भारत का कैसा चित्र प्रस्तुत किया गया है ?", options: ["आदर्श", "काल्पनिक", "यथातथ्य", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "जातीय अस्मिता की दृष्टि से इतिहास का प्रवाह कैसा है ?", options: ["विच्छिन्न", "अविच्छिन्न", "विच्छिन्न और अविच्छिन्न दोनों", "इनमें से कोई नहीं"], answer: 2 },
+                ]
+            },
+            {
+                subject: "English", questions: [
+                    { q: "The main character in 'Pace for Living' was a/an…………com merchant-", options: ["elderly", "handicapped", "young", "diabetic"], answer: 0 },
+                    { q: "The author admits that quick travel does not give the traveller the real…………of travel-", options: ["pains", "pleasure", "living", "holiday"], answer: 1 },
+                    { q: "Jim asked Mr. Greene to keep the old newspapers for the school-going children, who…………them-", options: ["burnt", "bought", "read", "colected"], answer: 3 },
+                    { q: "Jim told Mr. Johnson that it would reduce…………and save ecology if he did not use his car for short distances-", options: ["petrol", "pollution", "weight", "diesel"], answer: 1 },
+                    { q: "When the narrator sat down to write, Gillu wanted to catch her…………-", options: ["attention", "pen", "papers", "hair"], answer: 0 },
+                    { q: "Gillu's favourite food was", options: ["rice", "bread", "kaju", "jam"], answer: 2 },
+                    { q: "In 'What is wrong with Indian Films?' the author compares Indian films…………films", options: ["Korean", "Japanese", "Western", "Pakistani"], answer: 2 },
+                    { q: "The Cinema…………in various measures the function of poetry, music painting, drama, architecture and a host of other arts-", options: ["combines", "destroys", "deletes", "rescues"], answer: 0 },
+                    { q: "Aris firmly believed that his mother would have accepted the prize for all the…………of Burma-", options: ["people", "monks", "politicians", "soldiers"], answer: 0 },
+                    { q: "Who is the writer of 'Acceptance Speech'?", options: ["Toni Morrison", "Aung San Suu Kyi", "Jon Lexau", "Leo Tolstoy"], answer: 1 },
+                    { q: "The old woman was…………enough to know she could not help the young people-", options: ["stupid", "intelligent", "strong", "suspicious"], answer: 1 },
+                    { q: "Who is the writer of 'Once upon a Time'?", options: ["R.C. Hutchinson", "Toni Morrison", "Leo Tolstoy", "Satyajit Ray"], answer: 1 },
+                    { q: "Indians have shown the power to make…………changes-", options: ["big", "little", "monstrous", "gigantic"], answer: 0 },
+                    { q: "Where have old civilisation and culture grown and changed?", options: ["Indian and China", "England", "America", "None of these"], answer: 0 },
+                    { q: "The old woman tried to make everyone understand that the day should be spent…………-", options: ["sadly", "happily", "angrily", "jealously"], answer: 1 },
+                    { q: "Which festival is referred to in 'Little Girls Wiser than Men'?", options: ["Holi", "Diwali", "Easter", "None of these"], answer: 2 },
+                    { q: "The townspeople do not enjoy any real…………-", options: ["scenery", "food", "drink", "fun"], answer: 0 },
+                    { q: "A happy man's wants are satisfied by the property inherited by him from his…………-", options: ["uncle", "mother", "cousin", "father"], answer: 3 },
+                    { q: "'Polythene Bag' has been composed by…………-", options: ["Durga Prasad Panda", "Periasamy Thooran", "Puran Singh", "Laxmi Prasad Devkota"], answer: 0 },
+                    { q: "Lord Krishna had not met…………for some time-", options: ["Radha", "Sudama", "Vidyapati", "Yashoda"], answer: 0 },
+                    { q: "There was a…………which had the power to grant wishes-", options: ["snake", "pigeon", "tree", "temple"], answer: 2 },
+                    { q: "The Koel wakes in the poet's soul a thousand…………-", options: ["dreams", "desires", "memories", "longings"], answer: 2 },
+                    { q: "The porter's…………beat was fast-", options: ["pulse", "heart", "nerves", "muscles"], answer: 1 },
+                    { q: "Martha used to tell her stories in the hazel…………-", options: ["forest", "mountain", "riverbank", "glen"], answer: 3 },
+                    { q: "Munni advised Haiku to hire himself out as a…………-", options: ["tenant", "labourer", "farmer", "shopkeeper"], answer: 1 },
+                    { q: "A person has to be exposed to the particular…………to become allergic-", options: ["symptom", "antigen", "allergen", "protein"], answer: 2 },
+                    { q: "The banker decided to murder the…………-", options: ["guard", "servant", "gardener", "lawyer"], answer: 3 },
+                    { q: "For Mr. Gessler, boot making was a/an…………-", options: ["art", "burden", "job", "time pass"], answer: 0 },
+                    { q: "Sun and Moon went downstairs to meet the…………-", options: ["guests", "relatives", "neighbours", "friends"], answer: 0 },
+                    { q: "'Love Defiled' is about the narrator's relationship with his…………-", options: ["brother", "girl friend", "sister", "cousin"], answer: 1 },
+                    { q: "Is he writing a story?", options: ["A story is written by him", "Is a story being written by him?", "Is a story written by him", "None of these"], answer: 1 },
+                    { q: "We should not punish him.", options: ["He should not punished by us", "He should be punished by us", "He should not be punished by us", "None of these"], answer: 2 },
+                    { q: "She helped me.", options: ["I was helping her", "I was helped by her", "I was helping by her", "None of these"], answer: 1 },
+                    { q: "She said to her daughter, 'Study well…'", options: ["She advised her daughter to study well", "She advised her for study", "She advised to study", "She advised study"], answer: 0 },
+                    { q: "He says, 'I am going to Patna'.", options: ["He says that I am going to Patna", "He says that he is going to Patna", "He said he is going", "None of these"], answer: 1 },
+                    { q: "He said to me, 'What do you want?'", options: ["He asked me what I wanted", "He asked what do I want", "He asks what I want", "None of these"], answer: 0 },
+                    { q: "Rice and Curry…………his favourite food.", options: ["is", "are", "were", "have"], answer: 0 },
+                    { q: "The honest…………poor.", options: ["is", "are", "was", "none of these"], answer: 1 },
+                    { q: "Nothing but snow…………seen.", options: ["have", "are", "has", "none of these"], answer: 3 },
+                    { q: "He is known…………me.", options: ["to", "on", "with", "from"], answer: 0 },
+                    { q: "He went to the village…………foot.", options: ["from", "by", "on", "in"], answer: 2 },
+                    { q: "The rat is afraid…………cat.", options: ["at", "of", "for", "from"], answer: 1 },
+                    { q: "Correct spelling:", options: ["Auditorim", "Auditorium", "Auditarium", "Auditorum"], answer: 1 },
+                    { q: "Correct spelling:", options: ["Professor", "Proffessor", "Profesor", "Profesar"], answer: 0 },
+                    { q: "Correct spelling:", options: ["Neighbouring", "Neghboring", "Neboring", "Negbouring"], answer: 0 },
+                    { q: "आज बहुत गर्मी पड़ रही है", options: ["The train had started before I reach the station.", "The train had started before I reached the station.", "The train has started before I reached the station.", "None of these"], answer: 1 },
+                    { q: "तैरना एक कला है", options: ["Swimming are an art", "Swimming is an art", "Swimming is a art", "None of these"], answer: 1 },
+                    { q: "मैं तैरना जानता हूँ", options: ["The people of all religions lives here", "The people of all realigion lived here", "The people of all religions live here", "None of these"], answer: 2 },
+                    { q: "मेरे स्टेशन पहुंचने के पहले गाड़ी खुल थी", options: ["It is hot today", "It was extremely hot today", "It was hot today", "None of these"], answer: 3 },
+                ]
+            },
+            {
+                subject: "Mathematics", questions: [
+                    { q: "वृत्ताकार पथ पर तीन धावक एक ही स्थान से दौड़ना प्रारंभ करते हैं, तो एक चक्कर लगाने में क्रमश: 2 घंटे, 4 घंटे तथा 6 घंटे समय लगता है। तीनों को प्रस्थान बिन्दु पर पुनः मिलने में लगा समय होगा", options: ["8 घंटे", "6 घंटे", "12 घंटे", "2 घंटे"], answer: 2 },
+                    { q: "√2 है एक", options: ["परिमेय संख्या", "अपरिमेय संख्या", "प्राकृत संख्या", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "√3 है एक", options: ["परिमेय संख्या", "प्राकृत संख्या", "अपरिमेय संख्या", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "यदि x² - 5x + 4 = 0, तो x का मान होगा", options: ["पूर्णांक", "भिन्न संख्या", "अपरिमेय संख्या", "वास्तविक नहीं"], answer: 0 },
+                    { q: "यदि बहुपद x² + 3x + 5 के शून्यक α, β हों, तब αβ बराबर है", options: ["15", "-15", "5", "-5"], answer: 2 },
+                    { q: "त्रिघात बहुपद का सबसे व्यापक रूप है", options: ["ax² + bx + c", "ax⁴ + bx³ + c", "ax³ + bx² + cx + d", "ax² + bx² + c"], answer: 2 },
+                    { q: "निम्नांकित में कौन बहुपद नहीं है?", options: ["-7", "y² + √2", "3√x + 2x + 7", "4x² - 3x + 7"], answer: 2 },
+                    { q: "एक घात वाला बहुपद कहलाता है", options: ["द्विघात बहुपद", "त्रिघात समीकरण", "रैखिक बहुपद", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "रैखिक समीकरण युग्म को हल करने की कितनी बीजीय विधियाँ हैं?", options: ["2", "3", "4", "1"], answer: 1 },
+                    { q: "दो अंकों वाली संख्या अंकों के योग का चार गुणा है। यदि संख्या में 18 जोड़ दिया जाय तो अंक उलट जाती है, तो संख्या क्या होगी?", options: ["42", "24", "17", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "k के किस मान के लिए समीकरण युग्म 2x + 3y = 5 तथा 4x + ky = 10 के अनन्त हल हैं?", options: ["0", "1", "2", "6"], answer: 3 },
+                    { q: "यदि a/m ≠ b/l हो, तो समीकरण युग्म ax + by = c तथा lx + my = n का", options: ["कोई हल नहीं", "अद्वितीय हल है", "अनन्त हल हैं", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "द्विघात बहुपद x² - 2x + 1 का शून्यक होगा", options: ["(-1,1)", "(2,2)", "(-2,-2)", "(1,1)"], answer: 3 },
+                    { q: "यदि द्विघात समीकरण x² + x - 2 = 0 के मूल α, β हों, तो 1/α + 1/β का मान होगा", options: ["1/2", "-1/2", "1", "2"], answer: 0 },
+                    { q: "यदि बहुपद p(x) = x² - 2x + 5 के शून्यक a, b हों, तो ab का मान होगा", options: ["5", "-5", "2", "-2"], answer: 0 },
+                    { q: "यदि द्विघात समीकरण cx² - bx + a = 0 के विवेचक शून्य है, तो समान मूल होगा", options: ["b/2c", "-b/2a", "-b/4ac", "ac"], answer: 0 },
+                    { q: "क्या श्रेणी 5, 11, 17, 23, ... का कोई पद 301 हो सकता है?", options: ["हाँ", "नहीं", "पता नहीं", "इनमें से कोई नहीं"], answer: 0 },
+                    { q: "दो अंकों वाली कितनी संख्याएँ 3 से विभाज्य हैं?", options: ["31", "32", "30", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "श्रेणी 8, 3, -2, ... के प्रथम 22 पदों का योग क्या होगा?", options: ["-979", "-1000", "979", "इनमें से कोई नहीं"], answer: 0 },
+                    { q: "34 + 32 + 30 + ... + 10 का योगफल क्या होगा?", options: ["280", "286", "300", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "समबाहु ΔABC और ΔDEF की एक भुजा क्रमशः 6 cm और 3 cm हो, तो उनके क्षेत्रफलों का अनुपात होगा", options: ["2:1", "1:2", "2:3", "4:1"], answer: 3 },
+                    { q: "दो समरूप त्रिभुजों की भुजाएँ 4:9 के अनुपात में हैं। इनके क्षेत्रफलों का अनुपात क्या होगा?", options: ["4:9", "16:81", "3:2", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "दो समरूप त्रिभुजों के क्षेत्रफल क्रमशः 9 cm² तथा 16 cm² हैं। इनकी संगत भुजाओं का अनुपात क्या होगा?", options: ["2:3", "3:4", "4:5", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "ΔABC में AD ⊥ BC, AD = BD = 8 cm तथा BC = 23 cm हो, तो AC होगा", options: ["15 cm", "17 cm", "8 cm", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "किसी बिन्दु की x-अक्ष से दूरी उस बिन्दु का क्या कहलाती है?", options: ["भुज", "अक्ष", "कोटि", "आलेख"], answer: 2 },
+                    { q: "y-अक्ष से बिन्दु (3,5) की दूरी होगी", options: ["5", "2", "3", "4"], answer: 2 },
+                    { q: "बिन्दु (2,3) एवं (2,-1) के बीच की दूरी होगी", options: ["3", "4", "√3", "5"], answer: 1 },
+                    { q: "बिन्दु P(x,y) की मूल-बिन्दु से दूरी होगी", options: ["√(x²)", "√(x²-y²)", "√(x²+0²)", "√(x²+y²)"], answer: 3 },
+                    { q: "sec²A / (1 + cot²A) बराबर है", options: ["sec²A", "cosec²A", "cot²A", "tan²A"], answer: 3 },
+                    { q: "(1 + tan²A) / cosec²A बराबर होता है", options: ["sec²A", "cosec²A", "cot²A", "tan²A"], answer: 3 },
+                    { q: "2sin38°cos52° का मान है", options: ["1", "2", "3", "4"], answer: 0 },
+                    { q: "यदि cos θ = √3/2 हो, तो θ का मान होगा", options: ["60°", "30°", "45°", "90°"], answer: 1 },
+                    { q: "200 m की दूरी पर एक ही तरफ स्थित दो जहाजों का अवनमन कोण किसी लाइटहाउस के शीर्ष से 45° तथा 30° है। लाइटहाउस की ऊँचाई क्या होगी?", options: ["200 m", "300 m", "273.2 m", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "किसी वृत्त के बाह्य बिन्दु से खींची गयी स्पर्श रेखाओं की लंबाइयाँ", options: ["बराबर होती हैं", "बराबर नहीं होती हैं", "आधी होती हैं", "1/3 भाग होती हैं"], answer: 0 },
+                    { q: "यदि AB = 6 cm, BC = 7 cm, CD = 4 cm हो और कोई वृत्त चतुर्भुज की सभी भुजाओं को स्पर्श करता हो, तो AD = ?", options: ["2 cm", "3 cm", "4 cm", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "यदि एक अर्द्धवृत्त की परिमाप 36 cm हो, तो इसकी त्रिज्या होगी", options: ["14 cm", "7 cm", "21 cm", "इनमें से कोई नहीं"], answer: 3 },
+                    { q: "निम्न में से कौन वृत्त के क्षेत्रफल का सूत्र है?", options: ["2πr", "2πr²", "πr²", "4πr"], answer: 2 },
+                    { q: "दो वृत्तों के क्षेत्रफल का अनुपात 4:1 है, तो उनकी त्रिज्याओं का अनुपात है", options: ["4:1", "2:1", "1:2", "1:4"], answer: 1 },
+                    { q: "यदि किसी वृत्त की परिधि और क्षेत्रफल समान हों, तो वृत्त की त्रिज्या होगी", options: ["2 इकाई", "4 इकाई", "6 इकाई", "इनमें से कोई नहीं"], answer: 0 },
+                    { q: "यदि किसी A.P. में प्रथम पद a, सार्व अंतर d, अंतिम पद l तथा पदों की संख्या n हो, तो", options: ["l = a + (n-1)d", "l + a = (n-1)d", "l = a + (n+1)d", "l + a = (n+1)d"], answer: 0 },
+                ]
+            },
+            {
+                subject: "Science", questions: [
+                    { q: "दंत विशेषज्ञ किस दर्पण का उपयोग मरीजों के दाँतों का बड़ा प्रतिबिंब देखने के लिए करता है?", options: ["समतल दर्पण", "अवतल दर्पण", "उत्तल दर्पण", "इनमें से सभी"], answer: 1 },
+                    { q: "कौन-सा लेंस अपसारी लेंस भी कहलाता है?", options: ["अवतल लेंस", "उत्तल लेंस", "अवतल एवं उत्तल लेंस दोनों", "इनमें से कोई नहीं"], answer: 0 },
+                    { q: "पुतली के साइज को कौन नियंत्रित करता है?", options: ["पक्ष्माभी", "परितारिका", "नेत्र लेंस", "रेटिना (दृष्टि पटल)"], answer: 1 },
+                    { q: "किसी दृष्टि दोष को अवतल और उत्तल दोनों लेंसों से बने द्विफोकसी लेंस द्वारा संशोधित किया जा सकता है?", options: ["निकट दृष्टि दोष", "दीर्घ-दृष्टि दोष", "जरा-दूर दृष्टिता", "मोतियाबिंद"], answer: 2 },
+                    { q: "अवतल दर्पण की फोकस दूरी निर्धारित करने के लिए किस दूरी को मापना आवश्यक है?", options: ["दर्पण तथा पर्दा के बीच की दूरी", "दर्पण तथा बिंब के बीच की दूरी", "A और B दोनों", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "शब्दकोष के छोटे अक्षरों को पढ़ने के लिए किस लेंस का उपयोग करना पसंद करेंगे?", options: ["50 cm फोकस दूरी का उत्तल लेंस", "50 cm फोकस दूरी का अवतल लेंस", "5 cm फोकस दूरी का उत्तल लेंस", "5 cm फोकस दूरी का अवतल लेंस"], answer: 0 },
+                    { q: "निम्नलिखित में से कौन विद्युत विभवान्तर का SI मात्रक है?", options: ["वोल्ट", "ओम", "वोल्ट प्रति कूलॉम", "ऐम्पियर"], answer: 0 },
+                    { q: "लघुपथन (शार्ट सर्किट) के समय परिपथ में विद्युत धारा का मान", options: ["बहुत कम हो जाता है", "परिवर्तित नहीं होता है", "बहुत अधिक बढ़ जाता है", "निरंतर परिवर्तित होता है"], answer: 2 },
+                    { q: "पश्चिम की ओर प्रक्षेपित धनावेशित कण किसी चुंबकीय क्षेत्र द्वारा उत्तर की ओर विक्षेपित हो जाता है। चुंबकीय क्षेत्र की दिशा क्या है?", options: ["दक्षिण की ओर", "पूर्व की ओर", "अधोमुखी", "उपरिमुखी"], answer: 0 },
+                    { q: "ताँबे की आयताकार कुंडली में प्रेरित विद्युत धारा की दिशा में कितने परिभ्रमण के पश्चात परिवर्तन होता है?", options: ["दो", "एक", "आधे", "चौथाई"], answer: 3 },
+                    { q: "किसी विद्युत धारावाही सीधी लंबी परिनालिका के भीतर चुंबकीय क्षेत्र", options: ["शून्य होता है", "इसके सिरे की ओर जाने पर घटता है", "इसके सिरे की ओर जाने पर बढ़ता है", "सभी बिन्दुओं पर समान होता है"], answer: 2 },
+                    { q: "सौर कुकर के लिए कौन-सा दर्पण सर्वाधिक उपयुक्त होता है?", options: ["समतल दर्पण", "उत्तल दर्पण", "अवतल दर्पण", "इनमें सभी"], answer: 2 },
+                    { q: "'चिपको आंदोलन' का मुख्य उद्देश्य संरक्षित करना था", options: ["मिट्टी को", "वृक्षों को", "जल को", "बिजली को"], answer: 1 },
+                    { q: "निम्नलिखित में किस विलयन का उपयोग दीवारों की सफेदी करने के लिए किया जाता है?", options: ["Ca(HCO₃)₂", "Ca(OH)₂", "NaOH", "Na(HCO₃)"], answer: 1 },
+                    { q: "Na₂SO₄(aq) + BaCl₂(aq) → BaSO₄(s) + 2NaCl(aq) किस प्रकार की अभिक्रिया है?", options: ["संयोजन अभिक्रिया", "वियोजन अभिक्रिया", "द्वि विस्थापन अभिक्रिया", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "निम्नलिखित में से कौन-सा बुझा हुआ चूना है?", options: ["CaO", "Ca(OH)₂", "CaCO₃", "Ca"], answer: 1 },
+                    { q: "लवण Na₂CO₃ के जलीय विलयन का pH है", options: ["7", "7 से अधिक", "7 से कम", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "'बॉक्साइट' किस धातु का महत्त्वपूर्ण अयस्क है?", options: ["ताँबा", "जस्ता", "एल्युमिनियम", "लोहा"], answer: 2 },
+                    { q: "लोहा एवं इस्पात को जंग से सुरक्षित रखने के लिए उन पर किस धातु की पतली परत चढ़ायी जाती है?", options: ["ताँबा", "चाँदी", "सोना", "जिंक"], answer: 3 },
+                    { q: "किस रासायनिक यौगिक को गर्म करने पर प्लास्टर ऑफ पेरिस प्राप्त किया जा सकता है?", options: ["विरंजक चूर्ण", "जिप्सम", "चूना पत्थर", "कच्चा चूना"], answer: 1 },
+                    { q: "प्रोपेनोन में उपस्थित प्रकार्यात्मक समूह है", options: ["-OH", "-CHO", ">C=O", "-COOH"], answer: 2 },
+                    { q: "ऐसेटिक अम्ल का IUPAC नाम है", options: ["ऐथेनॉइक अम्ल", "मेथेनॉइक अम्ल", "प्रोपेनोन", "इनमें से कोई नहीं"], answer: 0 },
+                    { q: "विद्युत अपघटनी परिष्करण में अशुद्ध धातु को बनाया जाता है", options: ["एनोड", "कैथोड", "अपघट्य", "इनमें सभी"], answer: 0 },
+                    { q: "'अष्टक सिद्धांत' को किसने स्थापित किया?", options: ["डॉबेराइनर", "न्यूलैंड्स", "मेन्डेलीफ", "हेनरी मोज्ले"], answer: 1 },
+                    { q: "आधुनिक आवर्त नियम के अनुसार तत्त्वों के गुणधर्म", options: ["परमाणु द्रव्यमान का आवर्त फलन हैं", "परमाणु संख्या का आवर्त फलन हैं", "परमाणु साइज का आवर्त फलन हैं", "परमाणु आयतन का आवर्त फलन हैं"], answer: 1 },
+                    { q: "निम्नलिखित में कौन-सा आयन लाल लिटमस विलयन को नीला कर सकता है?", options: ["H⁺", "OH⁻", "Cl⁻", "O²⁻"], answer: 1 },
+                    { q: "पादप में जाइलम उत्तरदायी है", options: ["जल का वहन", "भोजन का पाचन", "अमीनो अम्ल का वहन", "ऑक्सीजन का वहन"], answer: 0 },
+                    { q: "निम्नलिखित में किसे कोशिका का 'ऊर्जा मुद्रा' कहा जाता है?", options: ["ADP", "ATP", "DTP", "PDP"], answer: 1 },
+                    { q: "पत्तियों में गैसों का आदान-प्रदान कहाँ होता है?", options: ["शिरा", "रंध्र", "मध्यशिरा", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "हृदय से रक्त को सम्पूर्ण शरीर में पंप किया जाता है", options: ["फेफड़ों द्वारा", "निलय द्वारा", "आलिंदों द्वारा", "इनमें सभी"], answer: 1 },
+                    { q: "कौन-सा पादप हार्मोन पत्तियों के मुरझाने के लिए उत्तरदायी है?", options: ["ऑक्सीन", "साइटोकाइनिन", "एब्सिसिक अम्ल", "जिब्बेरेलिन"], answer: 2 },
+                    { q: "जड़ का अधोगामी वृद्धि है", options: ["प्रकाशानुवर्तन", "गुरुत्वानुवर्तन", "जलानुवर्तन", "रसायनानुवर्तन"], answer: 1 },
+                    { q: "पॉन्स, मेडुला और अनुमस्तिष्क किसका हिस्सा हैं?", options: ["अग्रमस्तिष्क", "मध्य मस्तिष्क", "पश्च मस्तिष्क", "प्रसस्तिष्क"], answer: 2 },
+                    { q: "निम्नलिखित कौन-सी अनैच्छिक क्रिया नहीं है?", options: ["वमन", "चबाना", "लार आना", "हृदय का धड़कना"], answer: 1 },
+                    { q: "अलैंगिक जनन मुकुलन द्वारा होता है", options: ["अमीबा में", "यीस्ट में", "प्लैज्मोडियम में", "लेश्मानिया में"], answer: 1 },
+                    { q: "शुक्राणु का निर्माण होता है", options: ["वृषण में", "गर्भाशय में", "अंडाशय में", "इनमें सभी में"], answer: 0 },
+                    { q: "पुष्प का कौन-सा भाग फल बनता है?", options: ["परागकोश", "वर्तिकाग्र", "वर्तिका", "अंडाशय"], answer: 3 },
+                    { q: "लिंग गुणसूत्र का पूर्ण जोड़ा पाया जाता है", options: ["पुरुष में", "स्त्री में", "पुरुष और स्त्री दोनों में", "किसी में नहीं"], answer: 1 },
+                    { q: "मानव शरीर की किसी सामान्य कोशिका में गुणसूत्रों के कितने युग्म होते हैं?", options: ["21", "22", "23", "46"], answer: 2 },
+                    { q: "निम्न में से कौन-से समूहों में केवल जैव निम्नीकरण पदार्थ हैं?", options: ["घास, पुष्प तथा चमड़ा", "घास, लकड़ी तथा प्लास्टिक", "फसलों के छिलके, केक एवं रबर", "केक, लकड़ी एवं घास"], answer: 3 },
+                ]
+            },
+            {
+                subject: "Social Science", questions: [
+                    { q: "बोल्शेविक क्रांति कब हुई?", options: ["फरवरी 1917", "नवम्बर 1917", "अप्रैल 1917", "जुलाई 1905"], answer: 1 },
+                    { q: "हिन्दू-चीन पहुँचने वाले प्रथम व्यापारी कौन थे?", options: ["अंग्रेज", "फ्रांसीसी", "पुर्तगाली", "डच"], answer: 2 },
+                    { q: "असहयोग आंदोलन का प्रस्ताव कांग्रेस के किस अधिवेशन में पारित हुआ?", options: ["सितम्बर 1920, कलकत्ता", "अक्टूबर 1920, अहमदाबाद", "नवम्बर 1920, फैजपुर", "दिसम्बर 1920, नागपुर"], answer: 0 },
+                    { q: "राष्ट्रीय स्वयंसेवक संघ की स्थापना कब और किसने की?", options: ["1923 गुरु गोलवलकर", "1925 के. बी. हेडगेवार", "1926 चितरंजन दास", "1928 लालचंद"], answer: 1 },
+                    { q: "इंग्लैंड में सभी स्त्री एवं पुरुषों को वयस्क मताधिकार कब प्राप्त हुआ?", options: ["1838", "1881", "1918", "1932"], answer: 2 },
+                    { q: "कौन-सा सामाजिक वर्ग बुद्धिजीवी वर्ग के रूप में उभर कर आया?", options: ["उद्योगपति वर्ग", "पूँजीपति वर्ग", "श्रमिक वर्ग", "मध्यम वर्ग"], answer: 3 },
+                    { q: "प्राचीनकाल में किस स्थल मार्ग से एशिया और यूरोप का व्यापार होता था?", options: ["सूती मार्ग", "रेशम मार्ग", "उत्तरा पथ", "दक्षिण पथ"], answer: 1 },
+                    { q: "आर्थिक संकट के कारण यूरोप में कौन-सी नई शासन प्रणाली का उदय हुआ?", options: ["साम्यवादी शासन प्रणाली", "लोकतांत्रिक शासन प्रणाली", "फासीवादी नाजीवाद शासन", "पूँजीवादी शासन प्रणाली"], answer: 2 },
+                    { q: "किस पत्र ने रातों-रात वर्नाक्यूलर प्रेस एक्ट से बचने के लिए अपनी भाषा बदल दी?", options: ["हरिजन", "भारत मित्र", "अमृत बाजार पत्रिका", "हिन्दुस्तान रिव्यू"], answer: 2 },
+                    { q: "किसने कहा, 'मुद्रण ईश्वर की दी गई महानतम देन है, सबसे बड़ा तोहफा'?", options: ["महात्मा गाँधी", "मार्टिन लूथर", "पैगंबर मुहम्मद", "ईसा मसीह"], answer: 1 },
+                    { q: "सोपानी कृषि किस राज्य में प्रचलित है?", options: ["हरियाणा", "पंजाब", "बिहार", "उत्तराखंड"], answer: 3 },
+                    { q: "प्राणियों के शरीर में कितना प्रतिशत जल की मात्रा निहित होती है?", options: ["55%", "60%", "65%", "70%"], answer: 2 },
+                    { q: "वन संरक्षण एवं प्रबंध की दृष्टि से वनों को कितने वर्गों में वर्गीकृत किया गया है?", options: ["4 वर्गों में", "3 वर्गों में", "5 वर्गों में", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "एक NGO की वानिकी रिपोर्ट के अनुसार 1948 में विश्व में कितने हेक्टेयर भूमि पर वन का विस्तार था?", options: ["600 करोड़ हेक्टेयर", "400 करोड़ हेक्टेयर", "800 करोड़ हेक्टेयर", "500 करोड़ हेक्टेयर"], answer: 1 },
+                    { q: "एक टन इस्पात बनाने में कितने मैंगनीज का उपयोग होता है?", options: ["5 किग्रा", "10 किग्रा", "15 किग्रा", "20 किग्रा"], answer: 1 },
+                    { q: "कोयले का सर्वोत्तम प्रकार कौन-सा है?", options: ["एन्थ्रेसाइट", "पीट", "लिग्नाइट", "बिटुमिस"], answer: 0 },
+                    { q: "इनमें से कौन-सा उपभोक्ता उद्योग है?", options: ["पेट्रो रसायन", "लौह-इस्पात", "चीनी उद्योग", "चितरंजन लोकोमोटिव"], answer: 2 },
+                    { q: "भारतीय अन्तर्देशीय जलमार्ग प्राधिकरण का गठन किस वर्ष किया गया था?", options: ["1986", "1988", "1989", "1985"], answer: 0 },
+                    { q: "पाइराइट किस प्रकार का खनिज है?", options: ["धात्विक", "अधात्विक", "परमाणु", "ईंधन"], answer: 0 },
+                    { q: "2001 की जनगणना के अनुसार बिहार की नगरीय आबादी है", options: ["20.5 प्रतिशत", "15.5 प्रतिशत", "10.5 प्रतिशत", "25.5 प्रतिशत"], answer: 2 },
+                    { q: "निम्नलिखित व्यक्तियों में से कौन लोकतंत्र में रंगभेद के विरोधी नहीं थे?", options: ["किंग मार्टिन लूथर", "महात्मा गाँधी", "टोमी स्मिथ एवं जॉन कार्लोस", "जेड गुडी"], answer: 3 },
+                    { q: "सांप्रदायिक राजनीति किस धारणा पर आधारित है?", options: ["एक धर्म दूसरे धर्म से श्रेष्ठ है", "विभिन्न धर्मों के लोग समान नागरिक के रूप में रहते हैं", "एक धर्म के अनुयायी एक समुदाय बनाते हैं", "धार्मिक प्रभुत्व नहीं रखा जा सकता"], answer: 0 },
+                    { q: "संघ सरकार का उदाहरण है", options: ["अमेरिका", "चीन", "ग्रेट ब्रिटेन", "इनमें से कोई नहीं"], answer: 0 },
+                    { q: "भारतीय लोकतंत्र में सत्ता के विरुद्ध जन आक्रोश किस दशक से प्रारंभ हुआ?", options: ["1960 के दशक से", "1970 के दशक से", "1980 के दशक से", "1990 के दशक से"], answer: 1 },
+                    { q: "'चिपको आंदोलन' निम्नलिखित में से किससे संबंधित है?", options: ["पेड़ बचाने से", "आर्थिक शोषण की मुक्ति से", "शराबखोरी के विरुद्ध आवाज से", "कांग्रेस पार्टी के विरोध से"], answer: 0 },
+                    { q: "'ताड़ी विरोधी' आंदोलन निम्नलिखित में से किस प्रान्त में शुरू किया गया?", options: ["बिहार", "उत्तर प्रदेश", "आन्ध्र प्रदेश", "तमिलनाडु"], answer: 2 },
+                    { q: "राजनीतिक दलों की नींव सर्वप्रथम किस देश में पड़ी?", options: ["ग्रेट ब्रिटेन", "भारत", "फ्रांस", "संयुक्त राज्य अमेरिका"], answer: 0 },
+                    { q: "गठबंधन की सरकार बनाने की महानतम संभावना किस प्रकार की दलीय व्यवस्था में रहती है?", options: ["एकदलीय व्यवस्था", "द्विदलीय व्यवस्था", "बहुदलीय व्यवस्था", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "निम्नलिखित में से कौन-सा राष्ट्रीय दल नहीं है?", options: ["भारतीय राष्ट्रीय कांग्रेस", "बहुजन समाज पार्टी", "लोक जनशक्ति पार्टी", "भारतीय जनता पार्टी"], answer: 2 },
+                    { q: "इनमें से किस देश में मिश्रित अर्थव्यवस्था है?", options: ["अमेरिका", "चीन", "भारत", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "इनमें से किसे पिछड़ा राज्य कहा जाता है?", options: ["पंजाब", "केरल", "बिहार", "दिल्ली"], answer: 2 },
+                    { q: "शेयर बाजार की नियामक संस्था है", options: ["SIDBI", "SEBI", "RBI", "STOCK EXCHANGE"], answer: 1 },
+                    { q: "इनमें से कौन संस्थागत वित्त का साधन है?", options: ["व्यापारी", "रिश्तेदार", "व्यावसायिक बैंक", "महाजन"], answer: 2 },
+                    { q: "भारत की वित्तीय राजधानी किस शहर को कहा गया है?", options: ["मुम्बई", "दिल्ली", "पटना", "बेंगलुरू"], answer: 0 },
+                    { q: "इनमें से कौन एक बीमारू राज्य नहीं है?", options: ["बिहार", "मध्यप्रदेश", "कर्नाटक", "ओडीशा"], answer: 2 },
+                    { q: "वैश्वीकरण के मुख्य अंग कितने हैं?", options: ["एक", "दो", "पाँच", "चार"], answer: 2 },
+                    { q: "भारत में उपभोक्ता संरक्षण अधिनियम की घोषणा कब हुई?", options: ["1986", "1980", "1987", "1988"], answer: 0 },
+                    { q: "स्वर्णभूषणों की परिशुद्धता सुनिश्चित करने के लिए किस मान्यता प्राप्त चिह्न का होना आवश्यक है?", options: ["ISI मार्क", "हॉलमार्क", "एगमार्क", "इनमें से कोई नहीं"], answer: 1 },
+                    { q: "नदियों में बाढ़ आने का प्रमुख कारण क्या है?", options: ["जल की अधिकता", "वर्षा की अधिकता", "नदी की तली में अवसाद का जमाव", "इनमें से कोई नहीं"], answer: 2 },
+                    { q: "भूकम्प सम्भावित क्षेत्रों में भवनों की आकृति कैसी होनी चाहिए?", options: ["अंडाकार", "त्रिभुजाकार", "चौकोर", "आयताकार"], answer: 3 },
+                ]
+            }
+        ];
+
+        /* ─────────────────────────────────────────
+           STATE
+        ───────────────────────────────────────── */
+        let activeTab = 0;
+        // Per-subject answered count
+        const answered = new Array(quizData.length).fill(0);
+        const totals = quizData.map(s => s.questions.length);
+        // Track overall answers for score
+        let score = 0;
+
+        /* ─────────────────────────────────────────
+           BUILD TABS (lightweight — no DOM yet)
+        ───────────────────────────────────────── */
+        const tabsEl = document.getElementById("tabs");
+        const contentEl = document.getElementById("content");
+
+        quizData.forEach((s, i) => {
+            const btn = document.createElement("button");
+            btn.className = "tab" + (i === 0 ? " active" : "");
+            btn.dataset.i = i;
+            btn.innerHTML = s.subject + `<span class="tab-badge" id="badge-${i}">0/${totals[i]}</span>`;
+            tabsEl.appendChild(btn);
+        });
+
+        /* ─────────────────────────────────────────
+           LAZY RENDER — only build active subject
+        ───────────────────────────────────────── */
+        const rendered = new Array(quizData.length).fill(false);
+
+        function renderSubject(i) {
+            if (rendered[i]) return;
+            rendered[i] = true;
+
+            const panel = document.createElement("div");
+            panel.className = "subject-panel" + (i === 0 ? " active" : "");
+            panel.id = "panel-" + i;
+
+            const frag = document.createDocumentFragment();
+            const qs = quizData[i].questions;
+
+            for (let q = 0; q < qs.length; q++) {
+                const item = qs[q];
+                const div = document.createElement("div");
+                div.className = "question";
+
+                const h4 = document.createElement("h4");
+                h4.textContent = (q + 1) + ". " + item.q;
+                div.appendChild(h4);
+
+                // Store answer index & subject index directly as JS props
+                div._answer = item.answer;
+                div._subjIdx = i;
+                div._done = false;
+
+                const opts = item.options;
+                const optEls = new Array(opts.length);
+                for (let o = 0; o < opts.length; o++) {
+                    const opt = document.createElement("div");
+                    opt.className = "option";
+                    opt._idx = o;
+                    opt.textContent = opts[o];
+                    optEls[o] = opt;
+                    div.appendChild(opt);
+                }
+                div._opts = optEls;
+                frag.appendChild(div);
             }
 
-            div.appendChild(optionsFrag);
-            frag.appendChild(div);
-        });
-    });
+            panel.appendChild(frag);
+            contentEl.appendChild(panel);
 
-    quiz.appendChild(frag);
-
-    // ⚡ SINGLE GLOBAL LISTENER (FASTEST POSSIBLE)
-    quiz.addEventListener("pointerdown", function (e) {
-
-        const btn = e.target;
-        if (!btn.classList.contains("option")) return;
-
-        const qDiv = btn.parentElement;
-
-        if (qDiv.dataset.done === "1") return;
-        qDiv.dataset.done = "1";
-
-        const correctIndex = +qDiv.dataset.answer;
-        const clickedIndex = +btn.dataset.index;
-
-        const options = qDiv.children; // faster than querySelectorAll
-
-        // mark answer instantly
-        if (clickedIndex === correctIndex) {
-            btn.classList.add("correct");
-            score++;
-        } else {
-            btn.classList.add("wrong");
+            // Single delegated listener per panel
+            panel.addEventListener("pointerdown", onAnswer, { passive: true });
         }
 
-        // correct highlight (direct index access - NO querySelectorAll)
-        options[correctIndex + 1].classList.add("correct");
-        // +1 because first child is <h4>
+        // Render only the first tab immediately
+        renderSubject(0);
 
-    });
+        /* ─────────────────────────────────────────
+           TAB SWITCHING
+        ───────────────────────────────────────── */
+        tabsEl.addEventListener("click", e => {
+            const btn = e.target.closest(".tab");
+            if (!btn) return;
+            const i = +btn.dataset.i;
+            if (i === activeTab) return;
 
-}
+            // Hide old
+            document.getElementById("panel-" + activeTab).classList.remove("active");
+            tabsEl.children[activeTab].classList.remove("active");
 
-function showScore() {
-    document.getElementById("score").textContent = "Your Score: " + score;
-}
+            // Show new (render on demand)
+            activeTab = i;
+            renderSubject(i);
+            document.getElementById("panel-" + i).classList.add("active");
+            tabsEl.children[i].classList.add("active");
 
-loadQuiz();
-</script>
+            // Scroll tab into view
+            btn.scrollIntoView({ inline: "nearest", behavior: "smooth" });
+            // Scroll content to top
+            window.scrollTo({ top: 0, behavior: "instant" });
+            updateProgress();
+        });
+
+        /* ─────────────────────────────────────────
+           ANSWER HANDLER — zero DOM search
+        ───────────────────────────────────────── */
+        function onAnswer(e) {
+            const opt = e.target;
+            if (opt.className !== "option") return; // bail fast
+
+            const qDiv = opt.parentElement;
+            if (qDiv._done) return;
+            qDiv._done = true;
+            qDiv.classList.add("done"); // triggers pointer-events:none via CSS
+
+            const correct = qDiv._answer;
+            const clicked = opt._idx;
+
+            if (clicked === correct) {
+                opt.classList.add("correct");
+                score++;
+            } else {
+                opt.classList.add("wrong");
+                qDiv._opts[correct].classList.add("correct");
+            }
+
+            answered[qDiv._subjIdx]++;
+            updateBadge(qDiv._subjIdx);
+            updateProgress();
+        }
+
+        /* ─────────────────────────────────────────
+           UI UPDATES
+        ───────────────────────────────────────── */
+        function updateBadge(i) {
+            document.getElementById("badge-" + i).textContent =
+                answered[i] + "/" + totals[i];
+        }
+
+        function updateProgress() {
+            const total = totals.reduce((a, b) => a + b, 0);
+            const done = answered.reduce((a, b) => a + b, 0);
+            document.getElementById("progressFill").style.width =
+                Math.round(done / total * 100) + "%";
+        }
+
+        /* ─────────────────────────────────────────
+           SUBMIT
+        ───────────────────────────────────────── */
+        function submitQuiz() {
+            const total = totals.reduce((a, b) => a + b, 0);
+            const done = answered.reduce((a, b) => a + b, 0);
+            const pct = Math.round(score / total * 100);
+
+            // Build scoreboard if not done
+            let sb = document.getElementById("scoreboard");
+            if (!sb.classList.contains("show")) {
+                sb.classList.add("show");
+                let rows = "";
+                quizData.forEach((s, i) => {
+                    rows += `<div class="subj-row"><span>${s.subject}</span><span>${answered[i]}/${totals[i]} attempted</span></div>`;
+                });
+                sb.innerHTML = `
+      <div class="score-section">
+        <h2>🎯 Score: ${score} / ${total}</h2>
+        <p style="font-size:1.3rem;font-weight:700;color:${pct >= 60 ? 'var(--green)' : 'var(--red)'};margin:6px 0">${pct}%</p>
+        <p>${done} questions attempted out of ${total}</p>
+        <div class="subject-scores">${rows}</div>
+      </div>`;
+                // Scroll to it
+                sb.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
+
+    <!-- Scoreboard injected here -->
+    <div class="content" style="padding-top:0">
+        <div id="scoreboard"></div>
+    </div>
+
 </body>
+
 </html>
