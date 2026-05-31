@@ -1,429 +1,1154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSC Exam MCQ Quiz</title>
+    <meta charset="UTF-8">
 
-<style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
-    padding:20px;
-}
+    <title>SSC GD MCQ Practice Set </title>
 
-.quiz-container{
-    max-width:1100px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-}
 
-h1{
-    text-align:center;
-    color:#333;
-}
 
-.section-title{
-    background:#222;
-    color:white;
-    padding:12px;
-    margin-top:40px;
-    border-radius:5px;
-}
+    <meta name="robots" content="index, follow">
 
-.subject-title{
-    background:#2196F3;
-    color:white;
-    padding:10px;
-    margin-top:25px;
-    border-radius:5px;
-}
+    <meta name="author" content="SSC GD Practice Set">
 
-.question{
-    margin-bottom:20px;
-    padding:10px;
-    border-bottom:1px solid #ccc;
-}
+    <meta property="og:title" content="SSC MCQ Practice Set (Exam Level Questions)">
 
-.option{
-    display:block;
-    padding:10px;
-    margin:5px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-    cursor:pointer;
-    background:#fafafa;
-}
 
-.option:hover{
-    background:#eee;
-}
 
-.correct{
-    background:#4CAF50;
-    color:white;
-}
+    <meta property="og:type" content="article">
 
-.wrong{
-    background:#f44336;
-    color:white;
-}
 
-button{
-    padding:12px 25px;
-    font-size:18px;
-    background:#2196F3;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    margin-top:20px;
-}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap');
 
-#score{
-    margin-top:20px;
-    font-size:24px;
-    color:#333;
-    text-align:center;
-}
+        :root {
+            --blue: #1565C0;
+            --blue-light: #E3F2FD;
+            --green: #2E7D32;
+            --red: #C62828;
+            --bg: #F0F4F8;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --border: #d0d7e3;
+            --tab-h: 52px;
+        }
 
-</style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Baloo 2', 'Noto Sans Devanagari', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: var(--blue);
+            color: white;
+            padding: 16px 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+        }
+
+        .header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: .3px;
+        }
+
+        /* ── Tabs ── */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            flex-shrink: 0;
+            padding: 8px 18px;
+            border-radius: 8px 8px 0 0;
+            background: rgba(255, 255, 255, .18);
+            color: rgba(255, 255, 255, .85);
+            font-size: .88rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background .15s, color .15s;
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            background: var(--card);
+            color: var(--blue);
+        }
+
+        .tab:not(.active):hover {
+            background: rgba(255, 255, 255, .28);
+        }
+
+        /* ── Progress bar ── */
+        .progress-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, .25);
+            position: relative;
+            border-radius: 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #FFD54F;
+            border-radius: 2px;
+            transition: width .3s ease;
+            width: 0%;
+        }
+
+        /* ── Main content ── */
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px 16px 80px;
+        }
+
+        /* ── Subject panels (only active rendered) ── */
+        .subject-panel {
+            display: none;
+        }
+
+        .subject-panel.active {
+            display: block;
+        }
+
+        /* ── Question card ── */
+        .question {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px 10px;
+            margin-bottom: 14px;
+            contain: layout style;
+            /* layout containment = faster reflow */
+        }
+
+        .question h4 {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* ── Options ── */
+        .option {
+            display: block;
+            padding: 9px 12px;
+            margin: 5px 0;
+            border: 1.5px solid var(--border);
+            border-radius: 7px;
+            cursor: pointer;
+            background: #fafafa;
+            font-size: .9rem;
+            line-height: 1.4;
+            /* GPU-composited only — zero layout cost */
+            will-change: transform;
+            transition: border-color .1s;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .option:active {
+            transform: scale(.99);
+        }
+
+        /* colour changes via class — no JS style mutation */
+        .option.correct {
+            background: #E8F5E9;
+            border-color: var(--green);
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .option.wrong {
+            background: #FFEBEE;
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* ── Done overlay (blocks re-tap without JS re-check) ── */
+        .question.done .option {
+            pointer-events: none;
+        }
+
+        /* ── Score section ── */
+        .score-section {
+            background: var(--card);
+            border: 2px solid var(--blue);
+            border-radius: 12px;
+            text-align: center;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .score-section h2 {
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+
+        .score-section p {
+            color: #555;
+            font-size: .9rem;
+        }
+
+        /* ── Submit button ── */
+        .submit-wrap {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, var(--bg) 40%);
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .submit-btn {
+            pointer-events: all;
+            padding: 13px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            background: var(--blue);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(21, 101, 192, .4);
+            transition: transform .1s, box-shadow .1s;
+        }
+
+        .submit-btn:active {
+            transform: scale(.97);
+            box-shadow: 0 2px 6px rgba(21, 101, 192, .3);
+        }
+
+        /* ── Scoreboard ── */
+        #scoreboard {
+            display: none;
+        }
+
+        #scoreboard.show {
+            display: block;
+        }
+
+        .subject-scores {
+            margin-top: 10px;
+        }
+
+        .subj-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .9rem;
+        }
+
+        /* ── Stats badge on tabs ── */
+        .tab-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, .25);
+            color: white;
+            font-size: .7rem;
+            border-radius: 10px;
+            padding: 0 6px;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        .tab.active .tab-badge {
+            background: var(--blue-light);
+            color: var(--blue);
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="quiz-container">
+    <div class="header">
+        <h1> SSC Exam MCQ Quiz</h1>
+        <div class="tabs" id="tabs"></div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
 
-<h1>SSC Exam MCQ Quiz</h1>
+    <div class="content" id="content"></div>
 
-<div id="quiz"></div>
+    <div class="submit-wrap">
+        <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
 
-<button onclick="showScore()">Submit Quiz</button>
+    <script>
 
-<h2 id="score"></h2>
+        const quizData = [
 
-</div>
+            /* ================= SSC CGL ================= */
 
-<script>
+            {
+                section: "SSC CGL",
+                subject: "General Awareness",
+                questions: [
 
-const quizData = [
 
-/* ================= SSC CGL ================= */
+                    { q: "भारत का संविधान कब लागू हुआ? / When did the Constitution of India come into force?", options: ["15 अगस्त 1947 / 15 August 1947", "26 नवंबर 1949 / 26 November 1949", "26 जनवरी 1950 / 26 January 1950", "2 अक्टूबर 1950 / 2 October 1950"], answer: 2 },
 
-{
-section:"SSC CGL",
-subject:"General Awareness",
-questions:[
+                    { q: "प्लासी का युद्ध कब हुआ? / When was the Battle of Plassey fought?", options: ["1761", "1757", "1764", "1773"], answer: 1 },
 
-{q:"Who is known as Father of Nation?", options:["Mahatma Gandhi","Nehru","Subhash Bose","Patel"], answer:0},
+                    { q: "भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई? / When was the Indian National Congress founded?", options: ["1887", "1890", "1885", "1905"], answer: 2 },
 
-{q:"Capital of India?", options:["Delhi","Mumbai","Patna","Kolkata"], answer:0},
+                    { q: "भारत के प्रथम राष्ट्रपति कौन थे? / Who was the first President of India?", options: ["डॉ. राजेन्द्र प्रसाद / Dr. Rajendra Prasad", "डॉ. सर्वपल्ली राधाकृष्णन / Dr. S. Radhakrishnan", "जाकिर हुसैन / Zakir Husain", "वी.वी. गिरि / V.V. Giri"], answer: 0 },
 
-{q:"National animal of India?", options:["Tiger","Lion","Elephant","Leopard"], answer:0},
+                    { q: "संविधान सभा के अध्यक्ष कौन थे? / Who was the President of the Constituent Assembly?", options: ["जवाहरलाल नेहरू / Jawaharlal Nehru", "डॉ. भीमराव अम्बेडकर / B.R. Ambedkar", "डॉ. राजेन्द्र प्रसाद / Rajendra Prasad", "सरदार पटेल / Sardar Patel"], answer: 2 },
 
-{q:"Who invented bulb?", options:["Thomas Edison","Newton","Einstein","Tesla"], answer:0},
+                    { q: "भारत का राष्ट्रीय पशु कौन है? / What is the National Animal of India?", options: ["शेर / Lion", "हाथी / Elephant", "बाघ / Tiger", "गैंडा / Rhinoceros"], answer: 2 },
 
-{q:"Which planet is called Red Planet?", options:["Mars","Venus","Earth","Saturn"], answer:0}
+                    { q: "विटामिन C का रासायनिक नाम क्या है? / What is the chemical name of Vitamin C?", options: ["रेटिनॉल / Retinol", "एस्कॉर्बिक अम्ल / Ascorbic Acid", "कैल्सीफेरॉल / Calciferol", "थायमिन / Thiamine"], answer: 1 },
 
-]
-},
+                    { q: "भारतीय संविधान में मौलिक अधिकार किस देश से लिए गए हैं? / Fundamental Rights in Indian Constitution are borrowed from which country?", options: ["ब्रिटेन / UK", "कनाडा / Canada", "अमेरिका / USA", "आयरलैंड / Ireland"], answer: 2 },
 
-{
-section:"SSC CGL",
-subject:"Reasoning",
-questions:[
+                    { q: "पानी का रासायनिक सूत्र क्या है? / What is the chemical formula of water?", options: ["CO₂", "H₂O", "O₂", "NaCl"], answer: 1 },
 
-{q:"Find next number: 2,4,6,8,?", options:["10","12","14","16"], answer:0},
+                    { q: "भारतीय रिजर्व बैंक की स्थापना कब हुई? / When was the Reserve Bank of India established?", options: ["1935", "1947", "1950", "1921"], answer: 0 },
 
-{q:"Odd one out?", options:["Apple","Banana","Mango","Car"], answer:3},
+                    { q: "सूर्य के सबसे निकट ग्रह कौन सा है? / Which planet is nearest to the Sun?", options: ["शुक्र / Venus", "पृथ्वी / Earth", "बुध / Mercury", "मंगल / Mars"], answer: 2 },
 
-{q:"Mirror of LEFT?", options:["TFEL","LEFT","FELT","TELF"], answer:0},
+                    { q: "दांडी मार्च किस वर्ष हुआ था? / In which year was the Dandi March held?", options: ["1919", "1930", "1942", "1925"], answer: 1 },
 
-{q:"If A=1, B=2 then C=?", options:["3","4","5","6"], answer:0},
+                    { q: "भारत छोड़ो आंदोलन कब शुरू हुआ? / When was the Quit India Movement launched?", options: ["1942", "1935", "1947", "1920"], answer: 0 },
 
-{q:"Complete series: 5,10,15,?", options:["20","25","30","35"], answer:0}
+                    { q: "लोकसभा का कार्यकाल कितने वर्षों का होता है? / What is the tenure of Lok Sabha?", options: ["4 वर्ष / 4 Years", "5 वर्ष / 5 Years", "6 वर्ष / 6 Years", "7 वर्ष / 7 Years"], answer: 1 },
 
-]
-},
+                    { q: "UNO का मुख्यालय कहाँ स्थित है? / Where is the headquarters of the UNO?", options: ["जिनेवा / Geneva", "पेरिस / Paris", "न्यूयॉर्क / New York", "लंदन / London"], answer: 2 },
 
-{
-section:"SSC CGL",
-subject:"Mathematics",
-questions:[
+                    { q: "भारत का राष्ट्रीय गान किसने लिखा? / Who wrote the National Anthem of India?", options: ["बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra", "रवीन्द्रनाथ टैगोर / Rabindranath Tagore", "महात्मा गांधी / Mahatma Gandhi", "सुभाष चंद्र बोस / Subhas Bose"], answer: 1 },
 
-{q:"25 × 4 = ?", options:["100","120","80","90"], answer:0},
+                    { q: "पृथ्वी का सबसे बड़ा महासागर कौन सा है? / Which is the largest ocean on Earth?", options: ["अटलांटिक महासागर / Atlantic Ocean", "हिंद महासागर / Indian Ocean", "आर्कटिक महासागर / Arctic Ocean", "प्रशांत महासागर / Pacific Ocean"], answer: 3 },
 
-{q:"Square root of 81?", options:["9","8","7","6"], answer:0},
+                    { q: "भारतीय संविधान के निर्माता किसे कहा जाता है? / Who is known as the Architect of the Indian Constitution?", options: ["जवाहरलाल नेहरू / Jawaharlal Nehru", "डॉ. बी.आर. अम्बेडकर / B.R. Ambedkar", "राजेन्द्र प्रसाद / Rajendra Prasad", "सरदार पटेल / Sardar Patel"], answer: 1 },
 
-{q:"15% of 200?", options:["30","20","40","50"], answer:0},
+                    { q: "कौन सा तत्व सबसे हल्का है? / Which is the lightest element?", options: ["ऑक्सीजन / Oxygen", "हीलियम / Helium", "हाइड्रोजन / Hydrogen", "नाइट्रोजन / Nitrogen"], answer: 2 },
 
-{q:"Area of circle formula?", options:["πr²","2πr","r²","πd"], answer:0},
+                    { q: "भारत का राष्ट्रीय खेल कौन सा है? / Which is the National Sport of India?", options: ["हॉकी / Hockey", "क्रिकेट / Cricket", "कबड्डी / Kabaddi", "भारत का कोई आधिकारिक राष्ट्रीय खेल नहीं है / India has no official national sport"], answer: 3 },
 
-{q:"10² = ?", options:["100","10","20","50"], answer:0}
+                    { q: "जालियांवाला बाग हत्याकांड कब हुआ था? / When did the Jallianwala Bagh Massacre take place?", options: ["1915", "1919", "1922", "1930"], answer: 1 },
 
-]
-},
+                    { q: "वायुमंडल में सबसे अधिक मात्रा में कौन सी गैस पाई जाती है? / Which gas is most abundant in the atmosphere?", options: ["ऑक्सीजन / Oxygen", "कार्बन डाइऑक्साइड / Carbon Dioxide", "नाइट्रोजन / Nitrogen", "हाइड्रोजन / Hydrogen"], answer: 2 },
 
-{
-section:"SSC CGL",
-subject:"English",
-questions:[
+                    { q: "भारत का सबसे बड़ा राज्य क्षेत्रफल की दृष्टि से कौन सा है? / Which is the largest state of India by area?", options: ["उत्तर प्रदेश / Uttar Pradesh", "राजस्थान / Rajasthan", "मध्य प्रदेश / Madhya Pradesh", "महाराष्ट्र / Maharashtra"], answer: 1 },
 
-{q:"Synonym of Happy?", options:["Joyful","Sad","Angry","Cry"], answer:0},
+                    { q: "स्वामी विवेकानंद ने शिकागो धर्म सम्मेलन में कब भाषण दिया था? / When did Swami Vivekananda deliver his Chicago speech?", options: ["1893", "1885", "1901", "1910"], answer: 0 },
 
-{q:"Antonym of Dark?", options:["Light","Black","Night","Shade"], answer:0},
+                    { q: "मानव शरीर की सबसे बड़ी ग्रंथि कौन सी है? / Which is the largest gland in the human body?", options: ["अग्न्याशय / Pancreas", "यकृत / Liver", "थायरॉयड / Thyroid", "पिट्यूटरी / Pituitary"], answer: 1 }
 
-{q:"Choose correct spelling?", options:["Beautiful","Beautifull","Beautifal","Beautifool"], answer:0},
 
-{q:"He ___ going to school.", options:["is","are","am","be"], answer:0},
+                ]
+            },
 
-{q:"Plural of Child?", options:["Children","Childs","Childes","Childrens"], answer:0}
+            {
+                section: "SSC CGL",
+                subject: "Reasoning",
+                questions: [
 
-]
-},
 
-/* ================= SSC CHSL ================= */
+                    { q: "यदि A का अर्थ '+', B का अर्थ '-', C का अर्थ '×' और D का अर्थ '÷' है, तो 8 C 2 A 4 D 2 = ? / If A means '+', B means '-', C means '×' and D means '÷', then 8 C 2 A 4 D 2 = ?", options: ["18", "20", "16", "10"], answer: 0 },
 
-{
-section:"SSC CHSL",
-subject:"General Awareness",
-questions:[
+                    { q: "श्रृंखला पूरी करें: 2, 6, 12, 20, 30, ? / Complete the series: 2, 6, 12, 20, 30, ?", options: ["40", "42", "44", "46"], answer: 1 },
 
-{q:"Who wrote Ramayana?", options:["Valmiki","Tulsidas","Kalidas","Ved Vyas"], answer:0},
+                    { q: "यदि CAT = 24, तो DOG = ? / If CAT = 24, then DOG = ?", options: ["26", "30", "28", "27"], answer: 0 },
 
-{q:"Currency of India?", options:["Rupee","Dollar","Euro","Yen"], answer:0},
+                    { q: "एक घड़ी में 3:15 बजे घंटे और मिनट की सुई के बीच कोण कितना होगा? / What is the angle between hour and minute hands at 3:15?", options: ["0°", "7.5°", "15°", "22.5°"], answer: 1 },
 
-{q:"Largest ocean?", options:["Pacific","Indian","Atlantic","Arctic"], answer:0},
+                    { q: "Odd one out चुनिए: 16, 25, 36, 45, 49 / Choose the odd one out: 16, 25, 36, 45, 49", options: ["25", "36", "45", "49"], answer: 2 },
 
-{q:"Who discovered gravity?", options:["Newton","Einstein","Galileo","Tesla"], answer:0},
+                    { q: "यदि SOUTH को HTUOS लिखा जाता है, तो NORTH को कैसे लिखा जाएगा? / If SOUTH is written as HTUOS, how will NORTH be written?", options: ["HTRON", "NORTH", "RONTH", "HTORN"], answer: 0 },
 
-{q:"National bird of India?", options:["Peacock","Crow","Parrot","Eagle"], answer:0}
+                    { q: "श्रृंखला पूरी करें: A, C, F, J, O, ? / Complete the series: A, C, F, J, O, ?", options: ["T", "U", "V", "W"], answer: 1 },
 
-]
-},
+                    { q: "यदि सभी गुलाब फूल हैं और कुछ फूल लाल हैं, तो निष्कर्ष क्या होगा? / If all roses are flowers and some flowers are red, what follows?", options: ["सभी गुलाब लाल हैं / All roses are red", "कुछ गुलाब लाल हैं / Some roses are red", "कोई निष्कर्ष नहीं / No conclusion", "सभी लाल फूल गुलाब हैं / All red flowers are roses"], answer: 2 },
 
-{
-section:"SSC CHSL",
-subject:"Reasoning",
-questions:[
+                    { q: "दर्पण में MONDAY कैसे दिखाई देगा? / How will MONDAY appear in a mirror?", options: ["YADNOM", "YADMON", "YADMNO", "YANDOM"], answer: 0 },
 
-{q:"Find missing: 3,6,9,?", options:["12","15","18","21"], answer:0},
+                    { q: "यदि 5 आदमी 5 दिन में 5 काम करते हैं, तो 1 आदमी 1 दिन में कितने काम करेगा? / If 5 men do 5 jobs in 5 days, how many jobs will 1 man do in 1 day?", options: ["1", "1/5", "1/25", "5"], answer: 2 },
 
-{q:"Odd one out?", options:["Dog","Cat","Tiger","Table"], answer:3},
+                    { q: "श्रृंखला पूरी करें: 3, 9, 27, 81, ? / Complete the series: 3, 9, 27, 81, ?", options: ["162", "243", "324", "729"], answer: 1 },
 
-{q:"If CAT = 24 then BAT = ?", options:["23","22","21","20"], answer:1},
+                    { q: "यदि PEN = 35, तो BOOK = ? / If PEN = 35, then BOOK = ?", options: ["41", "43", "47", "49"], answer: 0 },
 
-{q:"Complete: A,C,E,?", options:["G","H","I","J"], answer:0},
+                    { q: "एक व्यक्ति उत्तर की ओर 10 मीटर चलता है, फिर दाएँ मुड़कर 5 मीटर चलता है। वह किस दिशा में है? / A man walks 10 m north, then turns right and walks 5 m. Which direction is he facing?", options: ["उत्तर / North", "पूर्व / East", "पश्चिम / West", "दक्षिण / South"], answer: 1 },
 
-{q:"Mirror image of TOP?", options:["POT","TOP","OPT","TPO"], answer:0}
+                    { q: "6, 11, 21, 36, 56, ? / Complete the series: 6, 11, 21, 36, 56, ?", options: ["81", "82", "83", "84"], answer: 0 },
 
-]
-},
+                    { q: "यदि A = 1, B = 2 ... Z = 26, तो CODE का मान क्या होगा? / If A=1, B=2 ... Z=26, then value of CODE is?", options: ["25", "27", "29", "31"], answer: 1 },
 
-{
-section:"SSC CHSL",
-subject:"Mathematics",
-questions:[
+                    { q: "एक परिवार में पिता, माता, 2 पुत्र और 2 पुत्रियाँ हैं। कुल कितने सदस्य हैं? / In a family there are father, mother, 2 sons and 2 daughters. Total members?", options: ["4", "5", "6", "7"], answer: 2 },
 
-{q:"50 ÷ 5 = ?", options:["10","15","20","25"], answer:0},
+                    { q: "श्रृंखला पूरी करें: Z, X, U, Q, ? / Complete the series: Z, X, U, Q, ?", options: ["M", "N", "L", "K"], answer: 2 },
 
-{q:"12 × 12 = ?", options:["144","124","134","154"], answer:0},
+                    { q: "यदि किसी कूट भाषा में DELHI = EFMIJ, तो PATNA = ? / If DELHI = EFMIJ in a code language, then PATNA = ?", options: ["QBUOB", "QBVOB", "QBUOA", "QBTOB"], answer: 0 },
 
-{q:"Half of 200?", options:["100","50","150","75"], answer:0},
+                    { q: "कौन सा शब्द अलग है? / Which word is different?", options: ["Apple", "Banana", "Mango", "Potato"], answer: 3 },
 
-{q:"Perimeter of square formula?", options:["4a","a²","2a","3a"], answer:0},
+                    { q: "यदि कल से पहले का दिन सोमवार था, तो परसों कौन सा दिन होगा? / If the day before yesterday was Monday, what day will it be day after tomorrow?", options: ["बुधवार / Wednesday", "गुरुवार / Thursday", "शुक्रवार / Friday", "शनिवार / Saturday"], answer: 1 },
 
-{q:"20% of 500?", options:["100","50","80","120"], answer:0}
+                    { q: "श्रृंखला पूरी करें: 1, 4, 9, 16, 25, ? / Complete the series: 1, 4, 9, 16, 25, ?", options: ["30", "35", "36", "49"], answer: 2 },
 
-]
-},
+                    { q: "यदि EAST = 28, तो WEST = ? / If EAST = 28, then WEST = ?", options: ["47", "48", "49", "50"], answer: 0 },
 
-{
-section:"SSC CHSL",
-subject:"English",
-questions:[
+                    { q: "एक घन के कितने फलक होते हैं? / How many faces does a cube have?", options: ["4", "6", "8", "12"], answer: 1 },
 
-{q:"Synonym of Big?", options:["Large","Tiny","Short","Weak"], answer:0},
+                    { q: "A, D, G, J, M, ? / Complete the series: A, D, G, J, M, ?", options: ["P", "Q", "R", "S"], answer: 0 },
 
-{q:"Antonym of Rich?", options:["Poor","Strong","Heavy","Fast"], answer:0},
+                    { q: "यदि RAM को 18-1-13 लिखा जाए, तो MAN को कैसे लिखेंगे? / If RAM is written as 18-1-13, then MAN is?", options: ["13-1-14", "14-1-13", "13-14-1", "12-1-14"], answer: 0 }
 
-{q:"Choose correct spelling?", options:["Education","Educaation","Educasion","Educetion"], answer:0},
 
-{q:"She ___ a doctor.", options:["is","are","am","be"], answer:0},
+                ]
+            },
 
-{q:"Plural of Mouse?", options:["Mice","Mouses","Mouse","Mices"], answer:0}
+            {
+                section: "SSC CGL",
+                subject: "Mathematics",
+                questions: [
 
-]
-},
 
-/* ================= SSC GD ================= */
 
-{
-section:"SSC GD",
-subject:"General Knowledge",
-questions:[
+                    { q: "A और B मिलकर एक कार्य को 12 दिनों में पूरा करते हैं, B और C 20 दिनों में तथा C और A 15 दिनों में। A, B और C मिलकर कार्य कितने दिनों में पूरा करेंगे? / A and B can do a work in 12 days, B and C in 20 days, and C and A in 15 days. In how many days can A, B and C together complete it?", options: ["6 दिन / 6 days", "8 दिन / 8 days", "10 दिन / 10 days", "12 दिन / 12 days"], answer: 1 },
 
-{q:"Who is Prime Minister of India?", options:["Narendra Modi","Rahul Gandhi","Amit Shah","Yogi"], answer:0},
+                    { q: "A और B मिलकर किसी कार्य को 3 दिनों में पूरा करते हैं। 2 दिन बाद B काम छोड़ देता है और कार्य 2 दिन बाद पूरा होता है। B अकेला कार्य कितने दिनों में करेगा? / A and B complete a work in 3 days. After 2 days B leaves, and the work finishes 2 days later. B alone can complete the work in?", options: ["4 दिन", "6 दिन", "8 दिन", "10 दिन"], answer: 2 },
 
-{q:"Indian flag has how many colors?", options:["3","2","4","5"], answer:0},
+                    { q: "A, B से 20% कम कार्य करता है। यदि A किसी कार्य को 15/2 घंटे में करता है, तो B उसे कितने घंटे में करेगा? / A does 20% less work than B. If A completes a work in 15/2 hours, B will complete it in?", options: ["4 घंटे", "6 घंटे", "8 घंटे", "10 घंटे"], answer: 1 },
 
-{q:"Which is national song of India?", options:["Vande Mataram","Jana Gana Mana","Saare Jahan","None"], answer:0},
+                    { q: "3/4 और 3/8 के बीच एक परिमेय संख्या कौन सी है? / Which rational number lies between 3/4 and 3/8?", options: ["7/3", "16/9", "9/16", "1/7"], answer: 2 },
 
-{q:"Largest state of India?", options:["Rajasthan","Bihar","UP","Punjab"], answer:0},
+                    { q: "दो सह-अभाज्य संख्याओं का गुणनफल 117 है। उनका LCM क्या होगा? / Product of two co-prime numbers is 117. Their LCM is?", options: ["9", "13", "39", "117"], answer: 3 },
 
-{q:"Who is known as Missile Man?", options:["A.P.J Abdul Kalam","Einstein","Newton","Tesla"], answer:0}
+                    { q: "13 का वह सबसे छोटा गुणज कौन सा है जो 4, 5, 6, 7 से भाग देने पर प्रत्येक बार 3 शेष छोड़े? / Least multiple of 13 which leaves remainder 3 when divided by 4,5,6,7?", options: ["3780", "3783", "2520", "2522"], answer: 1 },
 
-]
-},
+                    { q: "यदि किसी संख्या में 21 जोड़ने पर वह संख्या के तीन गुने से 7 कम हो जाती है, तो संख्या क्या है? / If 21 is added to a number, it becomes 7 less than thrice the number. Find the number.", options: ["14", "16", "18", "19"], answer: 0 },
 
-{
-section:"SSC GD",
-subject:"Reasoning",
-questions:[
+                    { q: "एक दर्जन जोड़ी मोजों का मूल्य ₹180 है और 20% छूट मिलती है। ₹48 में कितनी जोड़ी मोजे खरीदे जा सकते हैं? / A dozen pairs of socks cost ₹180 with 20% discount. How many pairs can be bought for ₹48?", options: ["4", "2", "5", "3"], answer: 0 },
 
-{q:"Find next: 1,2,3,4,?", options:["5","6","7","8"], answer:0},
+                    { q: "Subhash 50 पेज 10 घंटे में कॉपी करता है। Subhash और Prakash 300 पेज 40 घंटे में कॉपी करते हैं। Prakash अकेला 30 पेज कितने समय में कॉपी करेगा? / Subhash copies 50 pages in 10 h. Together Subhash and Prakash copy 300 pages in 40 h. How much time will Prakash take to copy 30 pages?", options: ["12 घंटे", "9 घंटे", "13 घंटे", "10 घंटे"], answer: 0 },
 
-{q:"Odd one out?", options:["Pen","Book","Chair","Pencil"], answer:2},
+                    { q: "यदि किसी कार्य को 10 दिनों में पूरा करने के लिए 270 व्यक्तियों की आवश्यकता है, तो 180 व्यक्ति वही कार्य कितने दिनों में पूरा करेंगे? / If 270 persons complete a work in 10 days, then 180 persons will complete it in?", options: ["27 दिन", "12 दिन", "15 दिन", "18 दिन"], answer: 2 },
 
-{q:"A=1 then D=?", options:["4","3","5","6"], answer:0},
+                    { q: "श्रृंखला 1, 5, 12, 24, 43 का अगला पद क्या होगा? / Find the next term: 1, 5, 12, 24, 43", options: ["51", "62", "71", "78"], answer: 2 },
 
-{q:"Complete series: 2,4,8,?", options:["16","14","12","10"], answer:0},
+                    { q: "A व्यवसाय में 1/4 पूंजी 15 माह के लिए लगाता है और B को कुल लाभ का 2/3 भाग मिलता है। B की पूंजी कितने समय लगी रही? / A invests 1/4 capital for 15 months and B gets 2/3 profit. For how many months was B's money invested?", options: ["6 माह", "8 माह", "10 माह", "12 माह"], answer: 2 },
 
-{q:"Mirror of GOD?", options:["DOG","GOD","ODG","DGO"], answer:0}
+                    { q: "29, किसी संख्या का 0.8% है। वह संख्या क्या है? / 29 is 0.8% of which number?", options: ["3625", "1450", "7250", "5800"], answer: 0 },
 
-]
-},
+                    { q: "3596/4292 का सरल रूप क्या है? / Reduce 3596/4292 to lowest terms.", options: ["29/37", "17/43", "31/37", "19/23"], answer: 2 },
 
-{
-section:"SSC GD",
-subject:"Mathematics",
-questions:[
+                    { q: "2530/1430 का सरल रूप क्या है? / Reduce 2530/1430 to lowest terms.", options: ["47/17", "23/13", "47/19", "29/17"], answer: 1 },
 
-{q:"100 ÷ 10 = ?", options:["10","20","5","15"], answer:0},
+                    { q: "यदि किसी वस्तु का अंकित मूल्य ₹800 है और 25% छूट दी जाती है, तो विक्रय मूल्य क्या होगा? / If the marked price is ₹800 and discount is 25%, what is the selling price?", options: ["₹550", "₹600", "₹650", "₹700"], answer: 1 },
 
-{q:"7 × 8 = ?", options:["56","48","64","72"], answer:0},
+                    { q: "एक संख्या का 40% = 120 है, तो संख्या क्या होगी? / 40% of a number is 120, find the number.", options: ["250", "300", "350", "400"], answer: 1 },
 
-{q:"Square of 9?", options:["81","91","71","61"], answer:0},
+                    { q: "यदि A:B = 3:5 और B:C = 10:13, तो A:C = ? / If A:B = 3:5 and B:C = 10:13, find A:C", options: ["6:13", "3:13", "6:25", "9:13"], answer: 0 },
 
-{q:"25% of 100?", options:["25","20","15","10"], answer:0},
+                    { q: "एक ट्रेन 90 km/h की गति से 40 सेकंड में कितनी दूरी तय करेगी? / A train moving at 90 km/h covers how much distance in 40 seconds?", options: ["800 m", "900 m", "1000 m", "1200 m"], answer: 2 },
 
-{q:"5² = ?", options:["25","15","20","10"], answer:0}
+                    { q: "यदि 12 मजदूर 15 दिन में काम पूरा करते हैं, तो 18 मजदूर कितने दिन में करेंगे? / 12 workers complete work in 15 days. 18 workers will take?", options: ["8", "10", "12", "9"], answer: 3 },
 
-]
-},
+                    { q: "एक वस्तु को ₹450 में बेचने पर 10% हानि होती है, क्रय मूल्य क्या है? / Selling at ₹450 gives 10% loss, find CP.", options: ["₹480", "₹500", "₹520", "₹550"], answer: 1 },
 
-{
-section:"SSC GD",
-subject:"English",
-questions:[
+                    { q: "√225 + √144 = ? / √225 + √144 = ?", options: ["27", "28", "29", "30"], answer: 2 },
 
-{q:"Synonym of Fast?", options:["Quick","Slow","Weak","Late"], answer:0},
+                    { q: "दो संख्याओं का योग 45 है और अंतर 9 है, बड़ी संख्या क्या है? / Sum is 45 and difference is 9, larger number?", options: ["18", "24", "27", "30"], answer: 3 },
 
-{q:"Antonym of Hot?", options:["Cold","Warm","Heat","Fire"], answer:0},
+                    { q: "यदि साधारण ब्याज ₹600 है, दर 5% है और समय 3 वर्ष है, तो मूलधन क्या है? / SI = 600, R = 5%, T = 3 years, find principal.", options: ["₹3500", "₹3800", "₹4000", "₹4200"], answer: 2 },
 
-{q:"Choose correct spelling?", options:["Success","Sucess","Succes","Sucses"], answer:0},
+                    { q: "एक वृत्त की त्रिज्या 14 cm है, उसका क्षेत्रफल क्या होगा? (π = 22/7) / Area of circle radius 14 cm?", options: ["616 cm²", "624 cm²", "612 cm²", "628 cm²"], answer: 0 },
 
-{q:"They ___ playing cricket.", options:["are","is","am","be"], answer:0},
+                    { q: "श्रृंखला पूरी करें: 5, 11, 23, 47, ? / Complete series", options: ["95", "96", "97", "98"], answer: 2 },
 
-{q:"Plural of Foot?", options:["Feet","Foots","Feets","Footes"], answer:0}
+                    { q: "एक व्यक्ति 6 km उत्तर, 8 km पूर्व जाता है। दूरी कितनी है? / Distance from start?", options: ["10 km", "12 km", "14 km", "16 km"], answer: 0 },
 
-]
-}
+                    { q: "यदि x = 3, तो 2x² + 5x = ? / If x=3", options: ["33", "34", "36", "39"], answer: 0 },
 
-];
+                    { q: "18, 24, 30 का LCM क्या है? / LCM of 18,24,30", options: ["120", "180", "240", "360"], answer: 1 },
 
-let score = 0;
+                    { q: "एक वस्तु पर 20% लाभ है। यदि लाभ ₹200 है, तो CP क्या है? / Profit 200 at 20%", options: ["₹800", "₹900", "₹1000", "₹1200"], answer: 2 },
 
-function loadQuiz(){
+                    { q: "समांतर श्रेणी: 2, 7, 12, 17, ? / Next term", options: ["21", "22", "23", "24"], answer: 2 },
 
-const quiz = document.getElementById("quiz");
+                    { q: "एक घन के किनारों की संख्या कितनी होती है? / Edges of cube?", options: ["6", "8", "10", "12"], answer: 3 },
 
-let currentSection = "";
+                    { q: "यदि 60% = 180, तो 100% क्या होगा? / Find total", options: ["280", "300", "320", "350"], answer: 1 },
 
-quizData.forEach((data)=>{
+                    { q: "एक नाव धारा के साथ 12 km/h और विपरीत 8 km/h चलती है। धारा की गति क्या है? / Stream speed?", options: ["1 km/h", "2 km/h", "3 km/h", "4 km/h"], answer: 1 },
 
-    if(currentSection !== data.section){
+                    { q: "यदि किसी संख्या का 1/4 भाग 15 है, तो संख्या क्या है? / 1/4 = 15", options: ["45", "50", "60", "75"], answer: 2 }
 
-        currentSection = data.section;
 
-        let sectionTitle = document.createElement("h2");
-        sectionTitle.classList.add("section-title");
-        sectionTitle.innerText = currentSection;
+                ]
+            },
 
-        quiz.appendChild(sectionTitle);
-    }
+            {
+                section: "SSC CGL",
+                subject: "English",
+                questions: [
 
-    let subjectTitle = document.createElement("h3");
-    subjectTitle.classList.add("subject-title");
-    subjectTitle.innerText = data.subject;
 
-    quiz.appendChild(subjectTitle);
+                    { q: "Choose the correct meaning of the idiom 'Let the chips fall where they may'", options: ["To take revenge", "To make things happen", "To take precaution", "Let something happen without bothering about the consequences"], answer: 3 },
+                    { q: "The celebration was abandoned due to heavy rains.", options: ["cancelled", "postponed", "shifted", "delayed"], answer: 1 },
+                    { q: "Opposite of 'Accentuate'", options: ["Disparage", "Highlight", "Stress", "Emphasize"], answer: 0 },
+                    { q: "He completed all projects on time except for two of them, which he found too difficult to ___", options: ["finish", "comprehend", "attempt", "solve"], answer: 1 },
+                    { q: "The act of showing disrespect towards sacred things is called:", options: ["Sacrilege", "Heresy", "Atheism", "Blasphemy"], answer: 3 },
+                    { q: "One word substitution: Misuse of words", options: ["Solecism", "Malapropism", "Barbarism", "Neologism"], answer: 1 },
+                    { q: "It is a myth that drinking within limits helps to improves the health.", options: ["helps improving", "help improve", "help improving", "helps improve"], answer: 3 },
+                    { q: "Choose the correctly spelt word", options: ["Promiscuous", "Promiscous", "Promescuous", "Promescous"], answer: 0 },
+                    { q: "Choose the correctly spelt word", options: ["Cumbersome", "Cumbersum", "Cumbersume", "Cumbersom"], answer: 0 },
+                    { q: "Opposite of 'Debauched'", options: ["Corrupt", "Immoral", "Honourable", "Wicked"], answer: 2 },
+                    { q: "Meaning of 'Taciturn'", options: ["Reticent", "Talkative", "Garrulous", "Loquacious"], answer: 0 },
+                    { q: "Choose the correctly spelt word", options: ["Satelite", "Satellite", "Sattelite", "Satalite"], answer: 1 },
+                    { q: "Idiom: 'Going against the grain'", options: ["Doing things differently from what you usually do", "Doing things in a normal way", "Doing things with ease", "Doing things without effort"], answer: 0 },
+                    { q: "The art of designing or writing on wax is called:", options: ["Calligraphy", "Cerography", "Typography", "Lithography"], answer: 1 },
+                    { q: "Her new shoes ensure her that she does not fall while running.", options: ["ensure to", "ensure for", "ensure that", "ensure"], answer: 2 },
+                    { q: "Error spotting: Since my mother was angry so I did not utter a word.", options: ["Was angry so", "Was angry", "Angry so", "No error"], answer: 0 },
+                    { q: "The mother looked _____ as her child began to walk much before the month prescribed by the doctors.", options: ["astonishingly", "astonished", "astonishment", "astonish"], answer: 1 },
+                    { q: "She was so _____ in her manner that he was mesmerised by her.", options: ["deferential", "differential", "deferent", "defer"], answer: 0 },
+                    { q: "Meaning of 'Acquiescent'", options: ["Tractable", "Stubborn", "Rebellious", "Resistant"], answer: 0 },
+                    { q: "As much as I tried to reduce my weight, I ended up nowhere.", options: ["As far as", "As soon as", "As long as", "No improvement"], answer: 3 },
 
-    data.questions.forEach((item,index)=>{
+                    { q: "Opposite of 'Devout'", options: ["Pious", "Pure", "Treacherous", "Ardent"], answer: 2 },
+                    { q: "Error spotting: She exercised discretion in investigating whether her husband eloped with his ex-girlfriend.", options: ["Discretion in", "Investigating whether", "Eloped with", "No error"], answer: 3 },
+                    { q: "Meaning of 'Achieve'", options: ["Accomplish", "Destroy", "Abdicate", "Bifurcate"], answer: 0 },
+                    { q: "Correct spelling", options: ["Flatered", "Voilations", "Cuttlery", "Detainees"], answer: 3 },
+                    { q: "Meaning of 'Precarious'", options: ["Perilous", "Salubrious", "Innocuous", "Inoffensive"], answer: 0 },
+                    { q: "Idiom: 'Turn a blind eye'", options: ["To take on a task that is way too big", "To work late into the night", "To present a counter argument", "To ignore situation, facts or reality"], answer: 3 },
+                    { q: "Opposite of 'Apparition'", options: ["Realness", "Perceptible", "Illusion", "Undetectable"], answer: 0 },
+                    { q: "Fill in the blank: He had wonderful gifts of ____ and spoke to the birds.", options: ["uptight", "folly", "insight", "dulness"], answer: 2 },
+                    { q: "Idiom: 'Whole bag of tricks'", options: ["Make use of the best resources from the ones that are available", "Make use of all the possibilities or techniques to achieve something", "Make use of all opportunities that cross your path", "Make use of all tricks to win the hearts of people"], answer: 1 },
+                    { q: "Idiom: 'Pull a rabbit out of a hat'", options: ["To let something happen and you have no control over it", "To do something unexpected", "To be someone worth having", "To make a special effort"], answer: 1 },
+                    { q: "One word substitution: A person who thinks he is ill all the time", options: ["Hypochondriac", "Neophyte", "Maniac", "Misanthrope"], answer: 0 },
+                    { q: "One word substitution: A place where coins are made", options: ["Mint", "Factory", "Connery", "Monetary"], answer: 0 },
+                    { q: "Error spotting: The lawyer deduced from the existing evidences that the accused was involved in the heinous crime.", options: ["In the heinous crime", "Deduced from the", "Accused was involved", "No error"], answer: 3 },
+                    { q: "Sentence improvement: Choose correct option", options: ["disgust", "distaste", "resentment", "annoyance"], answer: 2 },
+                    { q: "Fill in the blank: Rahul was surprised to see a ___ smile on Tarun’s face.", options: ["Ugly", "Symbolic", "Opaque", "Genuine"], answer: 3 },
+                    { q: "Error spotting: (chips/pizza sentence)", options: ["No error", "Were cheaper", "Nor the pizza", "The chips which"], answer: 3 },
+                    { q: "Error spotting: The travellers were pacified had landed on the runway much before the official announcement.", options: ["Landed on the runway", "Much before the", "Were pacified when", "No error"], answer: 2 },
+                    { q: "Opposite of 'Penurious'", options: ["Destitute", "Impoverished", "Impecunious", "Opulent"], answer: 3 },
+                    { q: "Correct spelling", options: ["Dosile", "Docile", "Dusile", "Dosiel"], answer: 1 },
+                    { q: "Meaning of 'Exasperate'", options: ["Tranquilize", "Alleviate", "Infuriate", "Appease"], answer: 2 }
 
-        let div = document.createElement("div");
-        div.classList.add("question");
+                ]
+            },
 
-        let q = document.createElement("h4");
-        q.innerText = (index+1)+". "+item.q;
+            /* ================= SSC CHSL ================= */
 
-        div.appendChild(q);
+            {
+                section: "SSC CHSL",
+                subject: "General Awareness",
+                questions: [
 
-        item.options.forEach((opt,i)=>{
+                    { q: "Who is the first Prime Minister of India?", options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel", "Indira Gandhi"], answer: 1 },
+                    { q: "Capital of India?", options: ["Mumbai", "Kolkata", "New Delhi", "Chennai"], answer: 2 },
+                    { q: "Who wrote National Anthem?", options: ["Bankim Chandra", "Tagore", "Nehru", "Bose"], answer: 1 },
+                    { q: "Largest planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: 2 },
+                    { q: "Currency of Japan?", options: ["Yuan", "Won", "Yen", "Dollar"], answer: 2 },
+                    { q: "Father of Nation?", options: ["Nehru", "Gandhi", "Patel", "Bose"], answer: 1 },
+                    { q: "National animal of India?", options: ["Lion", "Tiger", "Elephant", "Leopard"], answer: 1 },
+                    { q: "States in India?", options: ["28", "29", "30", "31"], answer: 0 },
+                    { q: "Largest ocean?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: 1 },
+                    { q: "APJ Abdul Kalam was a?", options: ["Scientist", "Cricketer", "Actor", "Politician"], answer: 0 },
 
-            let btn = document.createElement("div");
+                    { q: "Capital of USA?", options: ["New York", "Washington DC", "LA", "Chicago"], answer: 1 },
+                    { q: "Plants absorb?", options: ["Oxygen", "Nitrogen", "CO2", "Hydrogen"], answer: 2 },
+                    { q: "National game?", options: ["Hockey", "Cricket", "Football", "None"], answer: 3 },
+                    { q: "Electricity inventor?", options: ["Newton", "Edison", "Einstein", "Tesla"], answer: 1 },
+                    { q: "Red Planet?", options: ["Earth", "Mars", "Venus", "Jupiter"], answer: 1 },
 
-            btn.classList.add("option");
+                    { q: "Independence year?", options: ["1945", "1946", "1947", "1950"], answer: 2 },
+                    { q: "Largest state?", options: ["UP", "MP", "Rajasthan", "Bihar"], answer: 2 },
+                    { q: "India currency?", options: ["Dollar", "Euro", "Rupee", "Yen"], answer: 2 },
+                    { q: "Iron Man of India?", options: ["Gandhi", "Nehru", "Patel", "Bose"], answer: 2 },
+                    { q: "Largest continent?", options: ["Africa", "Asia", "Europe", "Australia"], answer: 1 },
 
-            btn.innerText = opt;
+                    { q: "Purifies blood organ?", options: ["Heart", "Liver", "Kidney", "Lungs"], answer: 2 },
+                    { q: "National bird?", options: ["Crow", "Peacock", "Sparrow", "Eagle"], answer: 1 },
+                    { q: "Longest river?", options: ["Yamuna", "Ganga", "Godavari", "Kaveri"], answer: 1 },
+                    { q: "Green Revolution related to?", options: ["Industry", "Agriculture", "Tech", "Education"], answer: 1 },
+                    { q: "PM of India?", options: ["Modi", "Rahul", "Kejriwal", "Yogi"], answer: 0 },
 
-            btn.onclick = function(){
+                    { q: "Smallest continent?", options: ["Asia", "Australia", "Europe", "Africa"], answer: 1 },
+                    { q: "Gravity discoverer?", options: ["Newton", "Edison", "Tesla", "Galileo"], answer: 0 },
+                    { q: "Sun rises in?", options: ["West", "North", "East", "South"], answer: 2 },
+                    { q: "Blue planet?", options: ["Mars", "Earth", "Venus", "Jupiter"], answer: 1 },
+                    { q: "Oxygen symbol?", options: ["Ox", "O", "O2x", "Og"], answer: 1 }
+                ]
+            },
 
-                if(div.classList.contains("answered")) return;
+            {
+                section: "SSC CHSL",
+                subject: "Reasoning",
+                questions: [
 
-                div.classList.add("answered");
+                    { q: "Odd one: 2,4,6,9", options: ["2", "4", "6", "9"], answer: 3 },
+                    { q: "Series: 2,4,6,?", options: ["7", "8", "9", "10"], answer: 1 },
+                    { q: "Opposite of East?", options: ["West", "North", "South", "None"], answer: 0 },
+                    { q: "A=1, B=2, C=3, B+C=?", options: ["4", "5", "6", "7"], answer: 1 },
+                    { q: "Mirror of 12?", options: ["21", "12", "10", "22"], answer: 0 },
 
-                if(i === item.answer){
+                    { q: "Coding CAT→DBU, DOG=?", options: ["EPG", "EPH", "FQH", "DPE"], answer: 0 },
+                    { q: "Odd letter: A,E,I,O,U,B", options: ["A", "E", "U", "B"], answer: 3 },
+                    { q: "Father of father?", options: ["Uncle", "Grandfather", "Brother", "Son"], answer: 1 },
+                    { q: "1,4,9,?", options: ["12", "15", "16", "20"], answer: 2 },
+                    { q: "North turn right twice?", options: ["North", "South", "East", "West"], answer: 1 },
 
-                    btn.classList.add("correct");
+                    { q: "A,C,E,?", options: ["F", "G", "H", "I"], answer: 1 },
+                    { q: "2:4 :: 3:?", options: ["6", "9", "12", "15"], answer: 1 },
+                    { q: "Odd: Apple, Mango, Carrot", options: ["Apple", "Mango", "Carrot", "Banana"], answer: 2 },
+                    { q: "CAT coding?", options: ["DBU", "CBU", "EBV", "ABU"], answer: 0 },
+                    { q: "10,20,30,?", options: ["35", "40", "45", "50"], answer: 1 },
 
-                    score++;
+                    { q: "Left of North?", options: ["East", "West", "South", "NE"], answer: 1 },
+                    { q: "Odd: 121,144,169,180", options: ["121", "144", "169", "180"], answer: 3 },
+                    { q: "Mirror of 21?", options: ["12", "21", "11", "22"], answer: 0 },
+                    { q: "Water image of 9?", options: ["6", "9", "12", "0"], answer: 0 },
+                    { q: "Z position?", options: ["24", "25", "26", "27"], answer: 2 },
 
-                }else{
+                    { q: "South-West opposite?", options: ["NE", "NW", "SE", "N"], answer: 0 },
+                    { q: "3,6,9,?", options: ["10", "11", "12", "13"], answer: 2 },
+                    { q: "ABC→BCD, DEF→?", options: ["EFG", "FGH", "GHI", "HIJ"], answer: 0 },
+                    { q: "Odd: Dog, Cat, Cow, Apple", options: ["Dog", "Cat", "Cow", "Apple"], answer: 3 },
+                    { q: "Hot:Cold :: Day:?", options: ["Sun", "Night", "Light", "Sky"], answer: 1 },
 
-                    btn.classList.add("wrong");
+                    { q: "5,10,20,?", options: ["25", "30", "35", "40"], answer: 3 },
+                    { q: "Odd: 11,13,17,20", options: ["11", "13", "17", "20"], answer: 3 }
 
+                ]
+            },
+
+            {
+                section: "SSC CHSL",
+                subject: "Mathematics",
+                questions: [
+
+                    { q: "A number is increased by 20% and then decreased by 20%. What is the net change?", options: ["0%", "4% decrease", "4% increase", "2% decrease"], answer: 1 },
+
+                    { q: "If 2x + 3 = 11, then x = ?", options: ["2", "3", "4", "5"], answer: 2 },
+
+                    { q: "Speed of a train is 60 km/h. Distance covered in 2.5 hours?", options: ["120 km", "140 km", "150 km", "160 km"], answer: 2 },
+
+                    { q: "Simple Interest on ₹1000 at 5% per annum for 2 years?", options: ["₹50", "₹100", "₹150", "₹200"], answer: 1 },
+
+                    { q: "Ratio of 2 numbers is 3:5 and sum is 64. Larger number is?", options: ["24", "36", "40", "48"], answer: 2 },
+
+                    { q: "Area of a circle with radius 7 cm (π=22/7)?", options: ["138 cm²", "154 cm²", "144 cm²", "160 cm²"], answer: 1 },
+
+                    { q: "LCM of 12 and 18 is:", options: ["36", "24", "48", "72"], answer: 0 },
+
+                    { q: "HCF of 36 and 48 is:", options: ["6", "12", "18", "24"], answer: 1 },
+
+                    { q: "If A can do a work in 10 days and B in 15 days, together they will do in:", options: ["5 days", "6 days", "7 days", "8 days"], answer: 1 },
+
+                    { q: "Compound Interest on ₹2000 at 10% for 2 years is:", options: ["₹400", "₹420", "₹440", "₹460"], answer: 1 },
+
+                    { q: "Square root of 144 is:", options: ["10", "11", "12", "13"], answer: 2 },
+
+                    { q: "If price increases from 100 to 120, percentage increase is:", options: ["10%", "15%", "20%", "25%"], answer: 2 },
+
+                    { q: "A shopkeeper gives 10% discount on ₹500. Selling price is:", options: ["₹450", "₹460", "₹470", "₹480"], answer: 0 },
+
+                    { q: "If x = 5, value of x² + 2x is:", options: ["35", "30", "25", "20"], answer: 0 },
+
+                    { q: "Average of 10, 20, 30, 40 is:", options: ["20", "25", "30", "35"], answer: 1 },
+
+                    { q: "Speed = Distance / ?", options: ["Time", "Mass", "Force", "Area"], answer: 0 },
+
+                    { q: "Perimeter of rectangle (l=10, b=5) is:", options: ["20", "25", "30", "40"], answer: 2 },
+
+                    { q: "Volume of cube with side 3 cm is:", options: ["9", "18", "27", "36"], answer: 2 },
+
+                    { q: "Probability of getting head in a coin toss:", options: ["1", "1/2", "1/3", "2/3"], answer: 1 },
+
+                    { q: "If 3x = 27, x = ?", options: ["6", "7", "8", "9"], answer: 3 },
+
+                    { q: "Percentage of 25 out of 200:", options: ["10%", "12.5%", "15%", "20%"], answer: 1 },
+
+                    { q: "Time taken to cover 180 km at 60 km/h:", options: ["2 hrs", "3 hrs", "4 hrs", "5 hrs"], answer: 1 },
+
+                    { q: "Cost price = 400, selling price = 500. Profit %:", options: ["20%", "25%", "30%", "40%"], answer: 1 },
+
+                    { q: "Loss if CP=200, SP=180:", options: ["10%", "20%", "5%", "15%"], answer: 0 },
+
+                    { q: "Simple Interest formula is:", options: ["P×R×T/100", "P+R+T", "PRT", "P/R/T"], answer: 0 },
+
+                    { q: "If 5 pens cost 50, cost of 1 pen:", options: ["5", "8", "10", "12"], answer: 2 },
+
+                    { q: "Number divisible by 2 and 3:", options: ["4", "6", "8", "10"], answer: 1 },
+
+                    { q: "Median of 2, 4, 6, 8, 10 is:", options: ["4", "5", "6", "8"], answer: 2 },
+
+                    { q: "If x + y = 10 and x = 6, y = ?", options: ["2", "3", "4", "5"], answer: 2 },
+
+                    { q: "Angle in a straight line is:", options: ["90°", "180°", "360°", "45°"], answer: 1 }
+
+                ]
+            },
+
+            {
+                section: "SSC CHSL",
+                subject: "English",
+                questions: [
+
+                    { q: "Synonym of Happy", options: ["Sad", "Joyful", "Angry", "Tired"], answer: 1 },
+                    { q: "Antonym of Brave", options: ["Coward", "Strong", "Bold", "Kind"], answer: 0 },
+                    { q: "Correct spelling", options: ["Beautiful", "Beautifull", "Beautifal", "Beautifool"], answer: 0 },
+                    { q: "He ___ going to school", options: ["is", "are", "am", "be"], answer: 0 },
+                    { q: "Plural of Child", options: ["Childs", "Childes", "Children", "Childrens"], answer: 2 },
+
+                    { q: "Synonym of Big", options: ["Large", "Small", "Tiny", "Weak"], answer: 0 },
+                    { q: "Antonym of Hot", options: ["Cold", "Warm", "Boiling", "Fire"], answer: 0 },
+                    { q: "Correct spelling", options: ["Accommodation", "Accomodation", "Acommodation", "Accomadation"], answer: 0 },
+                    { q: "She ___ a book", options: ["read", "reads", "reading", "readed"], answer: 1 },
+                    { q: "Opposite of Fast", options: ["Quick", "Slow", "Rapid", "Speedy"], answer: 1 },
+
+                    { q: "Synonym of Beautiful", options: ["Ugly", "Pretty", "Bad", "Weak"], answer: 1 },
+                    { q: "Antonym of Light", options: ["Heavy", "Dark", "Bright", "Shiny"], answer: 1 },
+                    { q: "He ___ a car", options: ["drive", "drives", "driving", "drove"], answer: 1 },
+                    { q: "Correct spelling", options: ["Necessary", "Neccessary", "Necesary", "Nessary"], answer: 0 },
+                    { q: "Plural of Book", options: ["Books", "Bookes", "Bookses", "Book"], answer: 0 },
+
+                    { q: "Synonym of Start", options: ["Begin", "End", "Stop", "Close"], answer: 0 },
+                    { q: "Antonym of Old", options: ["New", "Ancient", "Weak", "Slow"], answer: 0 },
+                    { q: "She ___ singing", options: ["is", "are", "am", "be"], answer: 0 },
+                    { q: "Correct spelling", options: ["Receive", "Recieve", "Receeve", "Receve"], answer: 0 },
+                    { q: "Opposite of Happy", options: ["Sad", "Glad", "Joyful", "Kind"], answer: 0 },
+
+                    { q: "Synonym of Smart", options: ["Clever", "Dumb", "Weak", "Slow"], answer: 0 },
+                    { q: "Antonym of Right", options: ["Left", "Correct", "True", "Good"], answer: 0 },
+                    { q: "He ___ a letter", options: ["write", "writes", "writing", "wrote"], answer: 1 },
+                    { q: "Correct spelling", options: ["Believe", "Belive", "Beleve", "Beleive"], answer: 0 },
+                    { q: "Plural of Man", options: ["Mans", "Men", "Manes", "Mens"], answer: 1 },
+
+                    { q: "Synonym of Quick", options: ["Fast", "Slow", "Weak", "Late"], answer: 0 },
+                    { q: "Antonym of Love", options: ["Hate", "Like", "Care", "Joy"], answer: 0 },
+                    { q: "She ___ happy", options: ["is", "are", "am", "be"], answer: 0 },
+                    { q: "Correct spelling", options: ["Government", "Goverment", "Govermant", "Govtment"], answer: 0 },
+                    { q: "Opposite of Day", options: ["Night", "Light", "Sun", "Sky"], answer: 0 }
+                ]
+            },
+
+            /* ================= SSC GD ================= */
+
+            {
+                section: "SSC GD",
+                subject: "General Knowledge",
+                questions: [
+
+                    { q: "Who is the President of India?", options: ["Droupadi Murmu", "Narendra Modi", "Rajnath Singh", "Amit Shah"], answer: 0 },
+                    { q: "Which is the longest river in India?", options: ["Yamuna", "Ganga", "Godavari", "Brahmaputra"], answer: 1 },
+                    { q: "National animal of India?", options: ["Lion", "Tiger", "Elephant", "Leopard"], answer: 1 },
+                    { q: "Capital of Jharkhand?", options: ["Ranchi", "Patna", "Bhopal", "Raipur"], answer: 0 },
+                    { q: "Who wrote Vande Mataram?", options: ["Tagore", "Bankim Chandra", "Nehru", "Gandhi"], answer: 1 },
+
+                    { q: "Which gas is most abundant in air?", options: ["Oxygen", "Nitrogen", "CO2", "Hydrogen"], answer: 1 },
+                    { q: "India got independence in?", options: ["1942", "1945", "1947", "1950"], answer: 2 },
+                    { q: "Which is smallest continent?", options: ["Asia", "Europe", "Australia", "Africa"], answer: 2 },
+                    { q: "Which planet is known as Red Planet?", options: ["Mars", "Venus", "Jupiter", "Mercury"], answer: 0 },
+                    { q: "Father of Indian Constitution?", options: ["Nehru", "Ambedkar", "Patel", "Rajendra Prasad"], answer: 1 },
+
+                    { q: "Currency of China?", options: ["Yen", "Yuan", "Won", "Dollar"], answer: 1 },
+                    { q: "Taj Mahal is located in?", options: ["Delhi", "Agra", "Jaipur", "Mumbai"], answer: 1 },
+                    { q: "National bird of India?", options: ["Crow", "Peacock", "Sparrow", "Parrot"], answer: 1 },
+                    { q: "Which is largest ocean?", options: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
+                    { q: "Vitamin C deficiency causes?", options: ["Scurvy", "Rickets", "Anemia", "Goitre"], answer: 0 },
+
+                    { q: "Who is known as Missile Man?", options: ["APJ Abdul Kalam", "Vikram Sarabhai", "CV Raman", "Homi Bhabha"], answer: 0 },
+                    { q: "Largest state of India?", options: ["UP", "MP", "Rajasthan", "Bihar"], answer: 2 },
+                    { q: "Which organ purifies blood?", options: ["Heart", "Kidney", "Lungs", "Liver"], answer: 1 },
+                    { q: "National flower of India?", options: ["Rose", "Lotus", "Lily", "Sunflower"], answer: 1 },
+                    { q: "UNO headquarters is in?", options: ["Paris", "London", "New York", "Geneva"], answer: 2 },
+
+                    { q: "Which is largest desert?", options: ["Thar", "Sahara", "Gobi", "Kalahari"], answer: 1 },
+                    { q: "Study of stars is called?", options: ["Geology", "Biology", "Astronomy", "Botany"], answer: 2 },
+                    { q: "Which is national sport of India?", options: ["Cricket", "Hockey", "Football", "Kabaddi"], answer: 1 },
+                    { q: "Which is currency of Japan?", options: ["Yuan", "Yen", "Won", "Dollar"], answer: 1 },
+                    { q: "First Indian in space?", options: ["Rakesh Sharma", "Kalpana Chawla", "Sunita Williams", "Vikram Sarabhai"], answer: 0 },
+
+                    { q: "Which is largest planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: 2 },
+                    { q: "Which organ controls body?", options: ["Heart", "Brain", "Lungs", "Kidney"], answer: 1 },
+                    { q: "Capital of India?", options: ["Mumbai", "Delhi", "Kolkata", "Chennai"], answer: 1 },
+                    { q: "Which metal is liquid at room temp?", options: ["Iron", "Mercury", "Gold", "Silver"], answer: 1 },
+                    { q: "National anthem writer?", options: ["Tagore", "Bankim", "Nehru", "Patel"], answer: 0 }
+
+                ]
+            },
+
+            {
+                section: "SSC GD",
+                subject: "Reasoning",
+                questions: [
+
+                    { q: "2, 4, 8, 16, ?", options: ["18", "24", "32", "20"], answer: 2 },
+                    { q: "Odd one out: Apple, Mango, Carrot, Banana", options: ["Apple", "Mango", "Carrot", "Banana"], answer: 2 },
+                    { q: "CAT → DBU, DOG → ?", options: ["EPH", "EPG", "FQH", "DPE"], answer: 1 },
+                    { q: "A is father of B, B is father of C. A is C’s?", options: ["Father", "Grandfather", "Brother", "Uncle"], answer: 1 },
+                    { q: "Find next: 3, 6, 9, ?", options: ["10", "11", "12", "13"], answer: 2 },
+
+                    { q: "Mirror of 21?", options: ["12", "21", "11", "22"], answer: 0 },
+                    { q: "Left of East?", options: ["West", "North", "South", "None"], answer: 1 },
+                    { q: "Coding: ABC → DEF, then DOG → ?", options: ["EPH", "EFG", "FGH", "HIJ"], answer: 0 },
+                    { q: "Odd number: 11, 13, 15, 18", options: ["11", "13", "15", "18"], answer: 3 },
+                    { q: "Series: 1, 4, 9, 16, ?", options: ["20", "24", "25", "30"], answer: 2 },
+
+                    { q: "If A=1, B=2, C=3 then B+C=?", options: ["4", "5", "6", "7"], answer: 1 },
+                    { q: "Water image of 6?", options: ["9", "6", "0", "8"], answer: 0 },
+                    { q: "Find missing: 5, 10, ?, 20", options: ["12", "14", "15", "16"], answer: 2 },
+                    { q: "Opposite of North?", options: ["East", "South", "West", "None"], answer: 1 },
+                    { q: "Alphabet series: A, C, E, ?", options: ["F", "G", "H", "I"], answer: 1 },
+
+                    { q: "Analogy: Hot : Cold :: Day : ?", options: ["Sun", "Night", "Light", "Dark"], answer: 1 },
+                    { q: "Find odd: 121, 144, 169, 180", options: ["121", "144", "169", "180"], answer: 3 },
+                    { q: "Coding: BAT → CBU, CAT → ?", options: ["DBU", "CBU", "EBV", "ABU"], answer: 0 },
+                    { q: "Direction: North → Right → ?", options: ["East", "South", "West", "North"], answer: 0 },
+                    { q: "Series: 2, 6, 12, 20, ?", options: ["30", "32", "34", "36"], answer: 1 },
+
+                    { q: "Odd word: Dog, Cat, Cow, Apple", options: ["Dog", "Cat", "Cow", "Apple"], answer: 3 },
+                    { q: "Find next: 10, 20, 40, ?", options: ["60", "70", "80", "90"], answer: 2 },
+                    { q: "Alphabet position of Z?", options: ["24", "25", "26", "27"], answer: 2 },
+                    { q: "Reverse of 12?", options: ["21", "12", "11", "22"], answer: 0 },
+                    { q: "Odd one: 2, 3, 5, 9", options: ["2", "3", "5", "9"], answer: 3 }
+                ]
+            },
+
+            {
+                section: "SSC GD",
+                subject: "Mathematics",
+                questions: [
+                    { q: "15% of 200?", options: ["20", "25", "30", "35"], answer: 2 },
+                    { q: "Square of 12?", options: ["124", "144", "154", "164"], answer: 1 },
+                    { q: "LCM of 6 and 8?", options: ["12", "18", "24", "36"], answer: 2 },
+                    { q: "HCF of 18 and 24?", options: ["6", "8", "12", "4"], answer: 0 },
+                    { q: "100 ÷ 4 = ?", options: ["20", "25", "30", "40"], answer: 1 },
+
+                    { q: "Speed = Distance / ?", options: ["Time", "Mass", "Force", "Area"], answer: 0 },
+                    { q: "Profit = SP - ?", options: ["CP", "MP", "Tax", "Loss"], answer: 0 },
+                    { q: "10² = ?", options: ["10", "20", "100", "1000"], answer: 2 },
+                    { q: "25% of 80?", options: ["15", "20", "25", "30"], answer: 1 },
+                    { q: "√81 = ?", options: ["7", "8", "9", "10"], answer: 2 },
+
+                    { q: "Simple Interest formula?", options: ["P×R×T/100", "P+R+T", "PRT", "None"], answer: 0 },
+                    { q: "Average of 10,20,30?", options: ["10", "20", "30", "40"], answer: 1 },
+                    { q: "1 km = ?", options: ["100 m", "1000 m", "10 m", "10000 m"], answer: 1 },
+                    { q: "Area of square = ?", options: ["a²", "2a", "4a", "a"], answer: 0 },
+                    { q: "Perimeter of square = ?", options: ["4a", "a²", "2a", "a"], answer: 0 },
+
+                    { q: "2³ = ?", options: ["6", "8", "9", "10"], answer: 1 },
+                    { q: "30% of 50?", options: ["10", "15", "20", "25"], answer: 1 },
+                    { q: "If CP=100 SP=120 profit?", options: ["10%", "15%", "20%", "25%"], answer: 2 },
+                    { q: "Loss if CP=200 SP=180?", options: ["10%", "20%", "5%", "15%"], answer: 0 },
+                    { q: "Ratio 2:3 sum=50 larger?", options: ["20", "30", "40", "25"], answer: 1 },
+
+                    { q: "Time taken for 60 km at 30 km/h?", options: ["1 hr", "2 hr", "3 hr", "4 hr"], answer: 1 },
+                    { q: "Mean of 2,4,6?", options: ["3", "4", "5", "6"], answer: 1 },
+                    { q: "20% of 150?", options: ["20", "25", "30", "35"], answer: 2 },
+                    { q: "12 × 12 = ?", options: ["124", "144", "154", "164"], answer: 1 },
+                    { q: "Volume of cube side 3?", options: ["9", "18", "27", "36"], answer: 2 }
+
+                ]
+            },
+
+            {
+                section: "SSC GD",
+                subject: "English",
+                questions: [
+
+                    { q: "Choose the correct sentence: He has went to school", options: ["He has went to school", "He have gone to school", "He has gone to school", "He gone to school"], answer: 2 },
+                    { q: "Identify the error: She did not knew the answer.", options: ["She did not", "knew the answer", "did not knew", "No error"], answer: 2 },
+                    { q: "Synonym of Abundant", options: ["Plenty", "Rare", "Little", "Empty"], answer: 0 },
+                    { q: "Antonym of Hostile", options: ["Friendly", "Angry", "Harsh", "Cruel"], answer: 0 },
+                    { q: "Fill in the blank: He is good ___ mathematics.", options: ["in", "at", "on", "for"], answer: 1 },
+
+                    { q: "One word substitution: A person who speaks many languages", options: ["Polyglot", "Orator", "Linguist", "Scholar"], answer: 0 },
+                    { q: "Idiom: Break the ice means", options: ["Start conversation", "Break object", "Stop talking", "Create anger"], answer: 0 },
+                    { q: "Choose correct sentence", options: ["I am living here since 2010", "I have been living here since 2010", "I live here since 2010", "I was living here since 2010"], answer: 1 },
+                    { q: "Opposite of Scarce", options: ["Plentiful", "Rare", "Weak", "Small"], answer: 0 },
+                    { q: "Fill in the blank: She is capable ___ doing this work.", options: ["to", "of", "for", "with"], answer: 1 },
+
+                    { q: "Error spotting: Each of the boys have completed their work.", options: ["Each of the boys", "have completed", "their work", "No error"], answer: 1 },
+                    { q: "Antonym of Expand", options: ["Increase", "Grow", "Contract", "Extend"], answer: 2 },
+                    { q: "Correct sentence", options: ["He is more stronger than me", "He is stronger than me", "He more stronger than me", "He is strongest than me"], answer: 1 },
+                    { q: "Synonym of Benevolent", options: ["Kind", "Cruel", "Harsh", "Evil"], answer: 0 },
+                    { q: "Fill in the blank: I prefer tea ___ coffee.", options: ["than", "to", "over", "from"], answer: 1 },
+
+                    { q: "One word substitution: One who hates mankind", options: ["Misanthrope", "Philanthropist", "Optimist", "Humanist"], answer: 0 },
+                    { q: "Choose correct sentence", options: ["She is too weak to lift it", "She is very weak to lift it", "She too weak to lift it", "She weak too to lift it"], answer: 0 },
+                    { q: "Idiom: Hit the nail on the head means", options: ["Do exactly right", "Miss target", "Break something", "Fail badly"], answer: 0 },
+                    { q: "Error spotting: He do not like tea.", options: ["He do not", "like tea", "He does not", "No error"], answer: 0 },
+                    { q: "Synonym of Vivid", options: ["Clear", "Dull", "Weak", "Dark"], answer: 0 },
+
+                    { q: "Antonym of Brave", options: ["Coward", "Bold", "Strong", "Hero"], answer: 0 },
+                    { q: "Fill in the blank: She is interested ___ music.", options: ["on", "in", "at", "for"], answer: 1 },
+                    { q: "Correct spelling", options: ["Definately", "Definitely", "Definitly", "Definatly"], answer: 1 },
+                    { q: "Synonym of Difficult", options: ["Easy", "Hard", "Simple", "Soft"], answer: 1 },
+                    { q: "Antonym of Victory", options: ["Defeat", "Win", "Success", "Gain"], answer: 0 },
+
+                    { q: "Fill in the blank: He prevented me ___ going there.", options: ["from", "to", "by", "with"], answer: 0 },
+                    { q: "Error spotting: She is knowing the answer.", options: ["She is knowing", "the answer", "knowing", "No error"], answer: 0 },
+                    { q: "Synonym of Smart", options: ["Clever", "Dumb", "Weak", "Slow"], answer: 0 },
+                    { q: "He ___ a letter", options: ["write", "writes", "writing", "wrote"], answer: 1 },
+                    { q: "Opposite of Day", options: ["Night", "Light", "Sun", "Sky"], answer: 0 }
+
+                ]
+            }
+
+        ];
+
+        /* ─────────────────────────────────────────
+                    STATE
+ ───────────────────────────────────────── */
+        let activeExam = null;
+        let activeTab = 0;
+
+        // Per-subject answered count
+        const answered = new Array(quizData.length).fill(0);
+        const totals = quizData.map(s => s.questions.length);
+
+        // Track overall answers for score
+        let score = 0;
+
+        /* ─────────────────────────────────────────
+           DOM
+        ───────────────────────────────────────── */
+        const tabsEl = document.getElementById("tabs");
+        const contentEl = document.getElementById("content");
+
+        /* ─────────────────────────────────────────
+           GROUP DATA BY EXAM (NEW UI ONLY)
+        ───────────────────────────────────────── */
+        const exams = [...new Set(quizData.map(q => q.section))];
+
+        /* ─────────────────────────────────────────
+           RENDER EXAMS (LEVEL 1)
+        ───────────────────────────────────────── */
+        function renderExams() {
+            tabsEl.innerHTML = "";
+
+            exams.forEach(exam => {
+                const btn = document.createElement("button");
+                btn.className = "tab";
+                btn.textContent = "📘 " + exam;
+
+                btn.onclick = () => {
+                    activeExam = exam;
+                    renderSubjects(exam);
+                };
+
+                tabsEl.appendChild(btn);
+            });
+        }
+
+        /* ─────────────────────────────────────────
+           RENDER SUBJECTS (LEVEL 2)
+        ───────────────────────────────────────── */
+        function renderSubjects(exam) {
+            tabsEl.innerHTML = "";
+
+            const subjects = quizData
+                .map((s, i) => ({ ...s, i }))
+                .filter(s => s.section === exam);
+
+            // BACK BUTTON
+            const back = document.createElement("button");
+            back.className = "tab";
+            back.textContent = "⬅ Back";
+
+            back.onclick = renderExams;
+            tabsEl.appendChild(back);
+
+            subjects.forEach(s => {
+                const btn = document.createElement("button");
+                btn.className = "tab";
+                btn.innerHTML =
+                    s.subject +
+                    `<span class="tab-badge" id="badge-${s.i}">
+                ${answered[s.i]}/${totals[s.i]}
+            </span>`;
+
+                btn.onclick = () => {
+                    renderSubject(s.i);
+                };
+
+                tabsEl.appendChild(btn);
+            });
+        }
+
+        /* ─────────────────────────────────────────
+           LAZY RENDER — only build active subject (UNCHANGED LOGIC)
+        ───────────────────────────────────────── */
+        const rendered = new Array(quizData.length).fill(false);
+
+        function renderSubject(i) {
+            if (rendered[i]) return;
+            rendered[i] = true;
+
+            const panel = document.createElement("div");
+            panel.className = "subject-panel active";
+            panel.id = "panel-" + i;
+
+            const frag = document.createDocumentFragment();
+            const qs = quizData[i].questions;
+
+            for (let q = 0; q < qs.length; q++) {
+                const item = qs[q];
+                const div = document.createElement("div");
+                div.className = "question";
+
+                const h4 = document.createElement("h4");
+                h4.textContent = (q + 1) + ". " + item.q;
+                div.appendChild(h4);
+
+                // Store answer index & subject index directly as JS props
+                div._answer = item.answer;
+                div._subjIdx = i;
+                div._done = false;
+
+                const opts = item.options;
+                const optEls = new Array(opts.length);
+
+                for (let o = 0; o < opts.length; o++) {
+                    const opt = document.createElement("div");
+                    opt.className = "option";
+                    opt._idx = o;
+                    opt.textContent = opts[o];
+                    optEls[o] = opt;
+                    div.appendChild(opt);
                 }
 
-                div.querySelectorAll(".option")[item.answer]
-                .classList.add("correct");
-            };
+                div._opts = optEls;
+                frag.appendChild(div);
+            }
 
-            div.appendChild(btn);
+            panel.appendChild(frag);
+            contentEl.innerHTML = "";   // only one subject visible
+            contentEl.appendChild(panel);
 
-        });
+            panel.addEventListener("pointerdown", onAnswer, { passive: true });
 
-        quiz.appendChild(div);
+            updateProgress();
+        }
 
-    });
+        /* ─────────────────────────────────────────
+           INIT
+        ───────────────────────────────────────── */
+        renderExams();
 
-});
+        /* ─────────────────────────────────────────
+           ANSWER HANDLER — UNCHANGED LOGIC
+        ───────────────────────────────────────── */
+        function onAnswer(e) {
+            const opt = e.target;
+            if (opt.className !== "option") return;
 
-}
+            const qDiv = opt.parentElement;
+            if (qDiv._done) return;
+            qDiv._done = true;
+            qDiv.classList.add("done");
 
-function showScore(){
+            const correct = qDiv._answer;
+            const clicked = opt._idx;
 
-document.getElementById("score").innerText =
-"Your Score: " + score;
+            if (clicked === correct) {
+                opt.classList.add("correct");
+                score++;
+            } else {
+                opt.classList.add("wrong");
+                qDiv._opts[correct].classList.add("correct");
+            }
 
-}
+            answered[qDiv._subjIdx]++;
+            updateBadge(qDiv._subjIdx);
+            updateProgress();
+        }
 
-loadQuiz();
+        /* ─────────────────────────────────────────
+           UI UPDATES (UNCHANGED LOGIC)
+        ───────────────────────────────────────── */
+        function updateBadge(i) {
+            const el = document.getElementById("badge-" + i);
+            if (el) {
+                el.textContent = answered[i] + "/" + totals[i];
+            }
+        }
 
-</script>
+        function updateProgress() {
+            const total = totals.reduce((a, b) => a + b, 0);
+            const done = answered.reduce((a, b) => a + b, 0);
+
+            document.getElementById("progressFill").style.width =
+                Math.round(done / total * 100) + "%";
+        }
+
+        /* ─────────────────────────────────────────
+           SUBMIT (UNCHANGED LOGIC)
+        ───────────────────────────────────────── */
+        function submitQuiz() {
+            const total = totals.reduce((a, b) => a + b, 0);
+            const done = answered.reduce((a, b) => a + b, 0);
+            const pct = Math.round(score / total * 100);
+
+            let sb = document.getElementById("scoreboard");
+
+            if (!sb.classList.contains("show")) {
+                sb.classList.add("show");
+
+                let rows = "";
+                quizData.forEach((s, i) => {
+                    rows += `<div class="subj-row">
+                        <span>${s.subject}</span>
+                        <span>${answered[i]}/${totals[i]} attempted</span>
+                     </div>`;
+                });
+
+                sb.innerHTML = `
+        <div class="score-section">
+            <h2>🎯 Score: ${score} / ${total}</h2>
+            <p style="font-size:1.3rem;font-weight:700;color:${pct >= 60 ? 'var(--green)' : 'var(--red)'};margin:6px 0">
+                ${pct}%
+            </p>
+            <p>${done} questions attempted out of ${total}</p>
+            <div class="subject-scores">${rows}</div>
+        </div>`;
+
+                sb.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
+
+    <!-- Scoreboard injected here -->
+    <div class="content" style="padding-top:0">
+        <div id="scoreboard"></div>
+    </div>
 
 </body>
+
 </html>
