@@ -3,363 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banking Exam MCQ Quiz</title>
+
+<title>Bank Exam Previous Year Question Papers</title>
+
+<meta name="description" content="Bank exam previous year question papers for IBPS, SBI, RBI and other banking exams.">
+<meta name="keywords" content="bank exam PYQ, IBPS PO paper, SBI PO question paper, RBI Grade B PDF">
+<meta name="author" content="Prime Software17">
+<link rel="canonical" href="https://www.primesoftware17.co.in/">
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
 
 body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
-    padding:20px;
+    background:#f4f7fb;
 }
 
-.quiz-container{
-    max-width:1100px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-}
-
-h1{
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:#fff;
+    padding:40px 20px;
     text-align:center;
-    color:#333;
 }
 
-.section-title{
-    background:#222;
-    color:white;
-    padding:12px;
-    margin-top:40px;
-    border-radius:5px;
-}
-
-.subject-title{
-    background:#2196F3;
-    color:white;
-    padding:10px;
-    margin-top:25px;
-    border-radius:5px;
-}
-
-.question{
-    margin-bottom:20px;
-    padding:10px;
-    border-bottom:1px solid #ccc;
-}
-
-.option{
-    display:block;
-    padding:10px;
-    margin:5px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-    cursor:pointer;
-    background:#fafafa;
-}
-
-.option:hover{
-    background:#eee;
-}
-
-.correct{
-    background:#4CAF50;
-    color:white;
-}
-
-.wrong{
-    background:#f44336;
-    color:white;
-}
-
-button{
-    padding:12px 25px;
-    font-size:18px;
-    background:#2196F3;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    margin-top:20px;
-}
-
-#score{
-    margin-top:20px;
+header h1{
     font-size:24px;
-    color:#333;
+}
+
+/* GRID */
+.container{
+    max-width:900px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
     text-align:center;
 }
 
+.card h3{
+    margin-bottom:10px;
+    color:#1e3c72;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    padding:10px 14px;
+    background:#1e3c72;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+/* REDIRECT MESSAGE */
+.redirect-message{
+    max-width:700px;
+    margin:80px auto;
+    padding:30px;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.redirect-message h2{
+    color:#1e3c72;
+    margin-bottom:15px;
+}
+
+.redirect-message p{
+    margin-bottom:12px;
+    color:#333;
+    line-height:1.6;
+}
+
+.redirect-message a{
+    color:#1e3c72;
+    font-weight:bold;
+    text-decoration:none;
+}
 </style>
 </head>
 
 <body>
 
-<div class="quiz-container">
+<header>
+    <h1>📘 Bank Exam Previous Year Question Papers</h1>
+</header>
 
-<h1>Banking Exam MCQ Quiz</h1>
+<div class="container">
 
-<div id="quiz"></div>
+    <div class="grid">
 
-<button onclick="showScore()">Submit Quiz</button>
+        <div class="card">
+            <h3>IBPS PO</h3>
+            <button class="btn" onclick="redirectUser('IBPS PO')">View Papers</button>
+        </div>
 
-<h2 id="score"></h2>
+        <div class="card">
+            <h3>IBPS Clerk</h3>
+            <button class="btn" onclick="redirectUser('IBPS Clerk')">View Papers</button>
+        </div>
 
+        <div class="card">
+            <h3>SBI PO</h3>
+            <button class="btn" onclick="redirectUser('SBI PO')">View Papers</button>
+        </div>
+
+        <div class="card">
+            <h3>RBI Grade B</h3>
+            <button class="btn" onclick="redirectUser('RBI Grade B')">View Papers</button>
+        </div>
+
+    </div>
 </div>
 
 <script>
-
-const quizData = [
-
-/* ================= PO SECTION ================= */
-
-{
-section:"Probationary Officer (PO)",
-subject:"Reasoning",
-questions:[
-
-{q:"Find next number: 2,4,6,8,?", options:["10","12","14","16"], answer:0},
-
-{q:"Odd one out?", options:["Apple","Banana","Car","Mango"], answer:2},
-
-{q:"If A=1 then C=?", options:["3","4","5","6"], answer:0},
-
-{q:"Complete series: 5,10,15,?", options:["20","25","30","35"], answer:0},
-
-{q:"Mirror image of TOP?", options:["POT","TOP","OPT","TPO"], answer:0}
-
-]
-},
-
-{
-section:"Probationary Officer (PO)",
-subject:"Quantitative Aptitude",
-questions:[
-
-{q:"25 × 4 = ?", options:["100","90","80","120"], answer:0},
-
-{q:"Square root of 144?", options:["12","11","10","13"], answer:0},
-
-{q:"20% of 500?", options:["100","50","80","120"], answer:0},
-
-{q:"Area of circle formula?", options:["πr²","2πr","r²","πd"], answer:0},
-
-{q:"10² = ?", options:["100","10","20","50"], answer:0}
-
-]
-},
-
-{
-section:"Probationary Officer (PO)",
-subject:"English Language",
-questions:[
-
-{q:"Synonym of Happy?", options:["Joyful","Sad","Angry","Cry"], answer:0},
-
-{q:"Antonym of Dark?", options:["Light","Black","Night","Shade"], answer:0},
-
-{q:"Choose correct spelling?", options:["Beautiful","Beautifull","Beautifal","Beautifool"], answer:0},
-
-{q:"He ___ going to school.", options:["is","are","am","be"], answer:0},
-
-{q:"Plural of Child?", options:["Children","Childs","Childes","Childrens"], answer:0}
-
-]
-},
-
-/* ================= CLERK SECTION ================= */
-
-{
-section:"Clerk (Customer Service Associate)",
-subject:"Reasoning",
-questions:[
-
-{q:"Find next: 1,2,3,4,?", options:["5","6","7","8"], answer:0},
-
-{q:"Odd one out?", options:["Pen","Book","Chair","Pencil"], answer:2},
-
-{q:"A=1 then D=?", options:["4","5","6","7"], answer:0},
-
-{q:"Complete series: 2,4,8,?", options:["16","14","12","10"], answer:0},
-
-{q:"Mirror of GOD?", options:["DOG","GOD","ODG","DGO"], answer:0}
-
-]
-},
-
-{
-section:"Clerk (Customer Service Associate)",
-subject:"Numerical Ability",
-questions:[
-
-{q:"50 ÷ 5 = ?", options:["10","15","20","25"], answer:0},
-
-{q:"12 × 12 = ?", options:["144","124","134","154"], answer:0},
-
-{q:"Half of 200?", options:["100","50","150","75"], answer:0},
-
-{q:"25% of 100?", options:["25","20","15","10"], answer:0},
-
-{q:"7 × 8 = ?", options:["56","48","64","72"], answer:0}
-
-]
-},
-
-{
-section:"Clerk (Customer Service Associate)",
-subject:"English Language",
-questions:[
-
-{q:"Synonym of Big?", options:["Large","Tiny","Short","Weak"], answer:0},
-
-{q:"Antonym of Rich?", options:["Poor","Strong","Heavy","Fast"], answer:0},
-
-{q:"Choose correct spelling?", options:["Success","Sucess","Succes","Sucses"], answer:0},
-
-{q:"They ___ playing cricket.", options:["are","is","am","be"], answer:0},
-
-{q:"Plural of Mouse?", options:["Mice","Mouses","Mouse","Mices"], answer:0}
-
-]
-},
-
-/* ================= SO SECTION ================= */
-
-{
-section:"Specialist Officer (SO)",
-subject:"Professional Knowledge",
-questions:[
-
-{q:"Banking regulator in India is?", options:["RBI","SEBI","IRDAI","NABARD"], answer:0},
-
-{q:"CRR stands for?", options:["Cash Reserve Ratio","Credit Rate Rule","Capital Risk Ratio","Cash Return Rate"], answer:0},
-
-{q:"KYC means?", options:["Know Your Customer","Keep Your Cash","Know Your Credit","Key Your Code"], answer:0},
-
-{q:"ATM full form?", options:["Automated Teller Machine","Any Time Money","Automatic Transfer Mode","Account Transfer Machine"], answer:0},
-
-{q:"Inflation means?", options:["Rise in prices","Fall in prices","No change","Profit increase"], answer:0}
-
-]
-},
-
-{
-section:"Specialist Officer (SO)",
-subject:"Reasoning",
-questions:[
-
-{q:"Find missing: 3,6,9,?", options:["12","15","18","21"], answer:0},
-
-{q:"Odd one out?", options:["Dog","Cat","Tiger","Table"], answer:3},
-
-{q:"If CAT = 24 then BAT = ?", options:["23","22","21","20"], answer:1},
-
-{q:"Complete: A,C,E,?", options:["G","H","I","J"], answer:0},
-
-{q:"Mirror image of TOP?", options:["POT","TOP","OPT","TPO"], answer:0}
-
-]
-},
-
-{
-section:"Specialist Officer (SO)",
-subject:"Quantitative Aptitude",
-questions:[
-
-{q:"100 ÷ 10 = ?", options:["10","20","5","15"], answer:0},
-
-{q:"7 × 8 = ?", options:["56","48","64","72"], answer:0},
-
-{q:"Square of 9?", options:["81","91","71","61"], answer:0},
-
-{q:"20% of 500?", options:["100","50","80","120"], answer:0},
-
-{q:"5² = ?", options:["25","15","20","10"], answer:0}
-
-]
+function redirectUser(exam){
+
+    document.body.innerHTML = `
+    <div class="redirect-message">
+        <h2>🚀 Why are you being redirected?</h2>
+
+        <p>
+            We have already collected and verified the best <b>${exam}</b> previous year question papers for you.
+        </p>
+
+        <p>
+            Instead of searching multiple websites, you are being redirected to the most relevant and trusted source.
+        </p>
+
+        <p>
+            This helps you save time and focus directly on preparation instead of searching.
+        </p>
+
+        <p>
+            For support or queries:
+            <br><br>
+            <a href="https://tinyurl.com/primesoftware17" target="_blank">
+                https://tinyurl.com/primesoftware17
+            </a>
+        </p>
+
+        <p><b>Redirecting now...</b></p>
+    </div>
+    `;
+
+    setTimeout(()=>{
+        // change this link as needed per exam
+        let links = {
+            "IBPS PO": "https://www.bankersadda.com/bank-exams-previous-year-question-papers/",
+            "IBPS Clerk": "https://www.bankersadda.com/bank-exams-previous-year-question-papers/",
+            "SBI PO": "https://www.governmentdailyjobs.com/2025/09/all-bank-exam-previous-year-question.html",
+            "RBI Grade B": "https://testbook.com/bank-exams/previous-year-question-papers"
+        };
+
+        window.location.href = links[exam];
+    }, 3500);
 }
-
-];
-
-let score = 0;
-
-function loadQuiz(){
-
-const quiz = document.getElementById("quiz");
-
-let currentSection = "";
-
-quizData.forEach((data)=>{
-
-    if(currentSection !== data.section){
-
-        currentSection = data.section;
-
-        let sectionTitle = document.createElement("h2");
-        sectionTitle.classList.add("section-title");
-        sectionTitle.innerText = currentSection;
-
-        quiz.appendChild(sectionTitle);
-    }
-
-    let subjectTitle = document.createElement("h3");
-    subjectTitle.classList.add("subject-title");
-    subjectTitle.innerText = data.subject;
-
-    quiz.appendChild(subjectTitle);
-
-    data.questions.forEach((item,index)=>{
-
-        let div = document.createElement("div");
-        div.classList.add("question");
-
-        let q = document.createElement("h4");
-        q.innerText = (index+1)+". "+item.q;
-
-        div.appendChild(q);
-
-        item.options.forEach((opt,i)=>{
-
-            let btn = document.createElement("div");
-
-            btn.classList.add("option");
-
-            btn.innerText = opt;
-
-            btn.onclick = function(){
-
-                if(div.classList.contains("answered")) return;
-
-                div.classList.add("answered");
-
-                if(i === item.answer){
-                    btn.classList.add("correct");
-                    score++;
-                }else{
-                    btn.classList.add("wrong");
-                }
-
-                div.querySelectorAll(".option")[item.answer]
-                .classList.add("correct");
-            };
-
-            div.appendChild(btn);
-        });
-
-        quiz.appendChild(div);
-    });
-
-});
-
-}
-
-function showScore(){
-document.getElementById("score").innerText =
-"Your Score: " + score;
-}
-
-loadQuiz();
-
 </script>
 
 </body>
