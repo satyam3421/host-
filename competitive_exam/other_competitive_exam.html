@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Competitive Exam PYQ & Practice Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    display:flex;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:320px;
+    background:#111827;
+    height:100vh;
+    padding:20px;
+    overflow-y:auto;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.sidebar h2{
+    font-size:18px;
+    margin-bottom:15px;
+    color:#60a5fa;
+}
+
+.sidebar a{
+    display:block;
+    color:#e5e7eb;
+    text-decoration:none;
+    padding:8px 0;
+    font-size:14px;
+    border-bottom:1px solid #1f2937;
+}
+
+.sidebar a:hover{
+    color:#60a5fa;
+}
+
+.note{
+    background:#1f2937;
+    padding:10px;
+    border-radius:10px;
+    font-size:13px;
+    margin-bottom:15px;
+    color:#cbd5e1;
+}
+
+/* MAIN */
+.main{
+    margin-left:340px;
+    padding:30px;
+    width:100%;
+}
+
+.header{
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-size:30px;
+}
+
+.header p{
+    color:#94a3b8;
+    margin-top:8px;
+}
+
+/* SEARCH */
+.search{
+    margin:20px 0;
+}
+
+.search input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    font-size:15px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    background:#1e293b;
+    padding:18px;
+    border-radius:14px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+.card a{
+    display:inline-block;
+    margin:5px;
+    padding:8px 10px;
+    background:#334155;
+    border-radius:8px;
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.card a:hover{
+    background:#2563eb;
+}
+
+.top-message{
+    background:#1f2937;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    color:#cbd5e1;
+    font-size:14px;
+    border-left:4px solid #3b82f6;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    body{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <h2>📌 Official Exam Resources</h2>
+
+    <div class="note">
+        This section contains official links platforms for PYQs, mock tests, notes, and preparation resources.
+    </div>
+
+    <div class="note" style="border-left:4px solid #22c55e;">
+        📢 If there is any exam or mock test, a message will be sent here one week in advance.
+    </div>
+
+    <a href="https://www.pyqs.org" target="_blank">PYQs.org</a>
+    <a href="https://www.pyqpaper.com" target="_blank">PYQPaper</a>
+    <a href="https://www.examside.com" target="_blank">ExamSIDE Question Bank</a>
+    <a href="https://www.selfstudys.com" target="_blank">SelfStudys PDFs</a>
+    <a href="https://www.testbook.com" target="_blank">Testbook PYQs & Mock Tests</a>
+    <a href="https://www.embibe.com" target="_blank">Embibe Free Tests</a>
+    <a href="https://nta.ac.in" target="_blank">NTA Exam Papers</a>
+    <a href="https://www.gateoverflow.in" target="_blank">GateOverflow</a>
+    <a href="https://jeehalt.com" target="_blank">JEE Halt Free Notes</a>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <div class="header">
+        <h1>📚 Competitive Exam PYQ & Practice Hub</h1>
+        <p>All exams • PYQs • Mock Tests • Official Links • Notes • Free Resources</p>
+    </div>
+
+    <div class="top-message">
+        🚀 This platform provides PYQs, mock tests, syllabus, notes, and official exam resources for all major competitive exams in India including Railway, Defence, Engineering, Medical, MBA, Law, Teaching, University, Design, and Professional courses.
+    </div>
+
+    <div class="search">
+        <input type="text" id="search" placeholder="Search exam category...">
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>🚆 Railway Exams</h3>
+            <a href="https://rrbcdg.gov.in" target="_blank">RRB Official</a>
+           
+        </div>
+
+        <div class="card">
+            <h3>🛡 Defence Exams</h3>
+            <a href="https://upsc.gov.in" target="_blank">NDA / CDS</a>
+            <a href="https://joinindianarmy.nic.in" target="_blank">Agniveer</a>
+        </div>
+
+        <div class="card">
+            <h3>🎓 Engineering Exams</h3>
+            <a href="https://jeemain.nta.nic.in" target="_blank">JEE Main</a>
+            <a href="https://jeeadv.ac.in" target="_blank">JEE Advanced</a>
+        </div>
+
+        <div class="card">
+            <h3>🩺 Medical Exams</h3>
+            <a href="https://neet.nta.nic.in" target="_blank">NEET UG</a>
+            <a href="https://nbems.edu.in" target="_blank">NEET PG</a>
+        </div>
+
+        <div class="card">
+            <h3>💼 MBA Exams</h3>
+            <a href="https://iimcat.ac.in" target="_blank">CAT</a>
+            <a href="https://xatonline.in" target="_blank">XAT</a>
+        </div>
+
+        <div class="card">
+            <h3>⚖ Law Exams</h3>
+            <a href="https://consortiumofnlus.ac.in" target="_blank">CLAT</a>
+        </div>
+
+        <div class="card">
+            <h3>📚 Teaching Exams</h3>
+            <a href="https://ugcnet.nta.nic.in" target="_blank">UGC NET</a>
+            <a href="https://ctet.nic.in" target="_blank">CTET</a>
+        </div>
+
+        <div class="card">
+            <h3>🏛 University Exams</h3>
+            <a href="https://cuet.samarth.ac.in" target="_blank">CUET UG</a>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Design Exams</h3>
+            <a href="https://nift.ac.in" target="_blank">NIFT</a>
+        </div>
+
+        <div class="card">
+            <h3>💰 Professional Courses</h3>
+            <a href="https://icai.org" target="_blank">CA</a>
+            <a href="https://icsi.edu" target="_blank">CS</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.getElementById("search").addEventListener("keyup", function(){
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+        card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>
